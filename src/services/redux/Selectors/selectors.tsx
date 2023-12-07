@@ -1,2 +1,5 @@
-import { createSelector } from '@reduxjs/toolkit';
-import { useSelector } from 'react-redux';
+import { RootState } from '../store';
+
+export const selectisLoggedIn = (state: RootState) => state.auth.isLoggedIn;
+export const selectisAdmin = (state: RootState) => state.auth.isAdmin;
+
