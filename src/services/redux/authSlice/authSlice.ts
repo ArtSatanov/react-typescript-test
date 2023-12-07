@@ -1,26 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-interface Users {
-      id: number;
-      login: string;
-      password: string;
-}
+import { User } from '../../../interfaces/interfaces';
 
 interface initState {
-   users: Users[],
+   user: User[],
    token: null | string;
    isLoggedIn: boolean;
    isRefreshing: boolean;
 }
 
-const initialState: initState = { users: [{id: 0, login: 'admin', password: 'admin'}]   };
+const initialState: initState = {
+   user: [
+      { id:0 , login: "admin", password: "admin" }
+   ], 
+   token: null,
+   isLoggedIn: false,
+   isRefreshing: false,
+};
 
 initialState: const authSlice = createSlice({
   name: 'auth',
   initialState,
-  token: null,
-  isLoggedIn: false,
-  isRefreshing: false,
 },
    extraReducers: {}
 );
