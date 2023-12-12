@@ -1,5 +1,4 @@
-export interface User {
-  id: number;
+export interface IUser {
   login: null | string;
   password: null | string;
 }
@@ -7,4 +6,24 @@ export interface User {
 export interface IPropsPage {
   redirectTo: string;
   component: React.ReactElement;
+}
+
+export interface IUserForm {
+  email: string;
+  password: string;
+}
+
+export interface IInitState {
+  user: IUser;
+  isLoggedIn: boolean;
+  isAdmin: boolean;
+  isRefreshing: boolean;
+  fakeToken: string | null;
+}
+
+export interface IResponseUser {
+  createdAt: string;
+  email: string;
+  password: string;
+  id: string;
 }

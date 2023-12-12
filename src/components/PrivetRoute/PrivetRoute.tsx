@@ -1,9 +1,9 @@
 import { Navigate } from 'react-router-dom';
-import { selectisLoggedIn } from '../../services/redux/Selectors/selectors';
+import { useAuth } from '../../services/redux/Selectors/selectors';
 import { IPropsPage } from '../../interfaces/interfaces';
 
-
-export const PrivateRoute = ({ component, redirectTo = '/' }:IPropsPage) => {
-   const redirect = !selectisLoggedIn;
-   return redirect ? <Navigate to={redirectTo} /> : component;
+export const PrivateRoute = ({ component, redirectTo = '/' }: IPropsPage) => {
+  const { isLoggedIn, isRefreshing } = useAuth();
+  const shouldRedirect = !isLoggedIn && !isRefreshing;
+  return shouldRedirect ? <Navigate to={redirectTo} /> : component;
 };
