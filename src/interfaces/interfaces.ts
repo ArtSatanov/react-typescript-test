@@ -1,5 +1,5 @@
 export interface IUser {
-  login: null | string;
+  email: null | string;
   password: null | string;
 }
 
@@ -22,8 +22,10 @@ export interface IInitState {
 }
 
 export interface IResponseUser {
-  createdAt: string;
-  email: string;
-  password: string;
-  id: string;
+  payload: {
+    createdAt: string;
+    email: string;
+    password: string;
+    id: string;
+  };
 }
