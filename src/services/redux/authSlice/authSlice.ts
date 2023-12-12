@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { IInitState, IResponseUser } from '../../../interfaces/interfaces';
-import { registerUser } from './operations';
+import { IInitState } from '../../../interfaces/interfaces';
+import { logInUser, signUpUser } from './operations';
+import { handleSignUpFulfilled, handleLogInFulfilled } from './handlers';
 
 const initialState: IInitState = {
   user: { email: null, password: null },
@@ -14,26 +15,18 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    // fill in primary logic here
+    logOut(state) {
+      state.isAdmin = false;
+      state.fakeToken = null;
+      state.isLoggedIn = false;
+      state.user = { email: null, password: null };
+    },
   },
   extraReducers: builder => {
-    builder.addCase(
-      registerUser.fulfilled,
-      (state: IInitState, action: IResponseUser) => {}
-    );
+    builder.addCase(signUpUser.fulfilled, handleSignUpFulfilled);
+    builder.addCase(logInUser.fulfilled, handleLogInFulfilled);
   },
 });
 
-export const { logIn, logOut } = authSlice.actions;
+export const { logOut } = authSlice.actions;
 export const authReducer = authSlice.reducer;
-
-// [registerUser.fulfilled](state: IInitState, action: IResponseUser) {
-//   const { email, password, id } = action.payload;
-//   state.user = { email: email, password: password };
-//   state.fakeToken = id;
-//   state.isLoggedIn = true;
-// },
-// logOut(state) {
-//   state.isAdmin = false;
-//   state.isLoggedIn = false;
-// },

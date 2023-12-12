@@ -20,7 +20,7 @@ export const fetchProducts = createAsyncThunk(
 );
 
 //--------------SignUp User-----------------
-export const registerUser = createAsyncThunk(
+export const signUpUser = createAsyncThunk(
   'registerUser',
   async (userInfo: IUserForm, thunkAPI) => {
     try {

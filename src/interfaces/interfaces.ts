@@ -22,10 +22,8 @@ export interface IInitState {
 }
 
 export interface IResponseUser {
-  payload: {
-    createdAt: string;
-    email: string;
-    password: string;
-    id: string;
-  };
+  createdAt: string;
+  email: string;
+  password: string;
+  id: string;
 }
