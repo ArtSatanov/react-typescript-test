@@ -19,6 +19,7 @@ export interface IInitState {
   isAdmin: boolean;
   isRefreshing: boolean;
   fakeToken: string | null;
+  errorAuth: string | null;
 }
 
 export interface IResponseUser {
