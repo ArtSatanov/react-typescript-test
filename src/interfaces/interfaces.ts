@@ -1,3 +1,4 @@
+// ------------------------------AUTH--------------------------
 export interface IUser {
   email: null | string;
   password: null | string;
@@ -27,4 +28,18 @@ export interface IResponseUser {
   email: string;
   password: string;
   id: string;
+}
+// ------------------------------ITEMS--------------------------
+export interface IItem {
+  createdAt: string;
+  name: string;
+  avatar: string;
+  description: string;
+  id: string;
+}
+
+export interface IInitStateItems {
+  items: IItem[];
+  isLoading: boolean;
+  error: string | null;
 }

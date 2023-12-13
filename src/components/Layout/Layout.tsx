@@ -1,15 +1,12 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
+import { Navigation } from '../Navigation/Navigation';
 
 export const Layout = () => {
   return (
     <>
       <header>
-        <nav>
-          <ul>
-            <li>!</li>
-          </ul>
-        </nav>
+        <Navigation />
       </header>
       <main>
         <Suspense fallback={<p>LOADING ... </p>}>
