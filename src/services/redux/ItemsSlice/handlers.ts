@@ -3,7 +3,20 @@ import { IInitStateItems, IItem } from '../../../interfaces/interfaces';
 
 export const handleItemsFulfilled = (
   state: IInitStateItems,
-  action: PayloadAction<IItem>
+  action: PayloadAction<IItem[]>
 ) => {
   state.items = action.payload;
+  state.isLoading = false;
+};
+
+export const handleItemsPending = (state: IInitStateItems) => {
+  state.isLoading = true;
+};
+
+export const handleItemsRejected = (
+  state: IInitStateItems,
+  action: PayloadAction<any>
+) => {
+  state.isLoading = false;
+  state.error = action.payload;
 };

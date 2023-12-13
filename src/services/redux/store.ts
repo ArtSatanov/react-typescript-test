@@ -11,6 +11,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { itemsReducer } from './ItemsSlice/itemsSilce';
 
 const authPersistCfg = {
   key: 'auth',
@@ -21,6 +22,7 @@ const authPersistCfg = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistCfg, authReducer),
+    items: itemsReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
