@@ -39,7 +39,7 @@ export interface IItem {
 }
 
 export interface IInitStateItems {
-  items: IItem[];
+  items: [];
   isLoading: boolean;
   error: string | null;
 }

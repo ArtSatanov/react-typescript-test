@@ -10,7 +10,9 @@ const initialState: IInitStateItems = {
 export const itemsSlice = createSlice({
   name: 'items',
   initialState,
-  extraReducers: builder => {},
+  extraReducers: builder => {
+    builder.addCase(fetchProducts.pending, handlePending);
+  },
 });
 
 export const itemsReducer = itemsSlice.reducer;

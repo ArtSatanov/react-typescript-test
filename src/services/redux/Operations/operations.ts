@@ -10,7 +10,7 @@ import { IUserForm, IResponseUser } from '../../../interfaces/interfaces';
 
 export const fetchProducts = createAsyncThunk(
   'fetchProducts',
-  async (signal, thunkAPI) => {
+  async (signal: any, thunkAPI) => {
     try {
       return await getProducts(signal);
     } catch (e: any) {
