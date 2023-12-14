@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { ThunkAction, UnknownAction, configureStore } from '@reduxjs/toolkit';
 import { authReducer } from './authSlice/authSlice';
 import {
   persistStore,
@@ -21,7 +21,7 @@ const authPersistCfg = {
 
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(authPersistCfg, authReducer),
+    auth: persistReducer<any, any>(authPersistCfg, authReducer),
     items: itemsReducer,
   },
   middleware: getDefaultMiddleware =>
@@ -33,4 +33,5 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-export type RootState = ReturnType<typeof store.getState>;
+
+export type RootState = ReturnType<typeof store.getState> | any;
