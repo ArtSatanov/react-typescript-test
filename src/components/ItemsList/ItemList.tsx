@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectError,
@@ -8,6 +8,7 @@ import {
 import { fetchProducts } from '../../services/redux/Operations/operations';
 import { AppDispatch } from '../../services/redux/store';
 import { Loader } from '../Loader/Loader';
+import { IItem } from '../../interfaces/interfaces';
 
 export const ItemList = () => {
   const items = useSelector(selectItems);
@@ -19,6 +20,7 @@ export const ItemList = () => {
   useEffect(() => {
     const controller = new AbortController();
     dispatch(fetchProducts(controller.signal));
+    console.log(items);
     return () => {
       controller.abort();
     };
@@ -26,7 +28,16 @@ export const ItemList = () => {
   return (
     <div>
       {isLoading && <Loader />}
-      {!isLoading && !error && items.length !== 0 && ({items.map(item  => ())})}
+      {!isLoading && !error && items.length !== 0 && (
+        <ul>
+          {items.map((item: IItem) => (
+            <li key={item.id}>
+              <img src={item.avatar} alt={item.name} />
+              <p>{item.description}</p>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

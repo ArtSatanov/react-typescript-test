@@ -1,9 +1,11 @@
+import { ItemList } from '../../components/ItemsList/ItemList';
+
 const Home = () => {
-
   return (
-    <div>Home</div>
-  )
-}
-
+    <div>
+      <ItemList />
+    </div>
+  );
+};
 
 export default Home;

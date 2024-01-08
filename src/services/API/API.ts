@@ -4,7 +4,7 @@ import { IUserForm } from '../../interfaces/interfaces';
 axios.defaults.baseURL = 'https://6570ff4709586eff66422a89.mockapi.io/';
 
 export async function getProducts(signal: any) {
-  const { data } = await axios.get(`goods`, { signal });
+  const { data } = await axios.get(`product`, { signal });
   return data;
 }
 
