@@ -14,7 +14,7 @@ const initialState: IInitStateItems = {
 };
 
 export const itemsSlice = createSlice({
-  name: 'items',
+  name: 'products',
   initialState,
   reducers: {},
   extraReducers: builder => {
