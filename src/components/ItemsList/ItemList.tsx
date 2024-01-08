@@ -6,6 +6,8 @@ import {
   selectItems,
 } from '../../services/redux/Selectors/selectors';
 import { fetchProducts } from '../../services/redux/Operations/operations';
+import { AppDispatch } from '../../services/redux/store';
+import { Loader } from '../Loader/Loader';
 
 export const ItemList = () => {
   const items = useSelector(selectItems);
@@ -17,6 +19,14 @@ export const ItemList = () => {
   useEffect(() => {
     const controller = new AbortController();
     dispatch(fetchProducts(controller.signal));
-  }, []);
-  return <div>ItemList</div>;
+    return () => {
+      controller.abort();
+    };
+  }, [dispatch]);
+  return (
+    <div>
+      {isLoading && <Loader />}
+      {!isLoading && !error && items.length !== 0 && ({items.map(item  => ())})}
+    </div>
+  );
 };
