@@ -20,7 +20,6 @@ export const ItemList = () => {
   useEffect(() => {
     const controller = new AbortController();
     dispatch(fetchProducts(controller.signal));
-    console.log(items);
     return () => {
       controller.abort();
     };
@@ -28,7 +27,7 @@ export const ItemList = () => {
   return (
     <div>
       {isLoading && <Loader />}
-      {!isLoading && !error && items.length !== 0 && (
+      {!isLoading && error === 'canceled' && items.length !== 0 && (
         <ul>
           {items.map((item: IItem) => (
             <li key={item.id}>
