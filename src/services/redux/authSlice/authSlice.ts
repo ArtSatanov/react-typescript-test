@@ -10,7 +10,7 @@ import {
 } from './handlers';
 
 const initialState: IInitState = {
-  user: { email: null, password: null },
+  user: { email: null, password: null, name: null },
   isLoggedIn: false,
   isAdmin: false,
   isRefreshing: false,
@@ -26,7 +26,7 @@ const authSlice = createSlice({
       state.isAdmin = false;
       state.fakeToken = null;
       state.isLoggedIn = false;
-      state.user = { email: null, password: null };
+      state.user = { email: null, password: null, name: null };
     },
   },
   extraReducers: builder => {

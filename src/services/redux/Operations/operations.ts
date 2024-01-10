@@ -25,6 +25,7 @@ export const signUpUser = createAsyncThunk(
   async (userInfo: IUserForm, thunkAPI) => {
     try {
       const userData = await setNewUser(userInfo);
+      console.log(userInfo);
       return userData;
     } catch (e: any) {
       return thunkAPI.rejectWithValue(e.message);

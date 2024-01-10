@@ -1,8 +1,11 @@
+import { Signin } from '../../components/Singin/Signin';
+
 const RegisterPage = () => {
   return (
-    <div>RegisterPage</div>
-  )
-}
+    <div>
+      <Signin />
+    </div>
+  );
+};
 
 export default RegisterPage;
-

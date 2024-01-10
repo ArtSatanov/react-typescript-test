@@ -1,8 +1,4 @@
 // ------------------------------AUTH--------------------------
-export interface IUser {
-  email: null | string;
-  password: null | string;
-}
 
 export interface IPropsPage {
   redirectTo: string;
@@ -24,10 +20,11 @@ export interface IInitState {
 }
 
 export interface IResponseUser {
-  createdAt: string;
+  createdAt?: string;
   email: string;
   password: string;
   id: string;
+  name: string;
 }
 // ------------------------------ITEMS--------------------------
 export interface IItem {
@@ -42,4 +39,19 @@ export interface IInitStateItems {
   items: IItem[];
   isLoading: boolean;
   error: string | null;
+}
+
+// ---------------------------------FORMS-------------------------
+export interface IValues {
+  name: string;
+  lastname: string;
+  email: string;
+  password: string;
+}
+
+export interface IUser {
+  name: string | null;
+  lastname?: string | null;
+  email: string | null;
+  password: string | null;
 }
