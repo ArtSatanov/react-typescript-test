@@ -57,17 +57,16 @@ export const logInUser = createAsyncThunk(
   async (userInfo: IUserForm, thunkAPI) => {
     try {
       const usersList = await getListOfUsers();
-      const userID = usersList.forEach((user: IResponseUser) => {
-        if (
-          user.email === userInfo.email &&
-          user.password === userInfo.password
-        ) {
-          return user.id;
-        } else {
-          console.log('User not found');
-        }
-      });
-      return getUser(userID);
+      console.log(userInfo.email);
+      const userResp = usersList.find(
+        (user: IResponseUser) =>
+          user.email === userInfo.email && user.password === userInfo.password
+      );
+      console.log(userResp);
+
+      const userLoginned = await getUser(userResp.id);
+
+      return userLoginned;
     } catch (e: any) {
       return thunkAPI.rejectWithValue(e.message);
     }

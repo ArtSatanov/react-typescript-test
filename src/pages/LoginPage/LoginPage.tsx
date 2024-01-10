@@ -1,8 +1,11 @@
+import { Signin } from '../../components/Signin/Signin';
+
 const LoginPage = () => {
   return (
-    <div>LoginPage</div>
-  )
-}
-
+    <div>
+      <Signin />
+    </div>
+  );
+};
 
 export default LoginPage;

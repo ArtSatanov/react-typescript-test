@@ -10,22 +10,22 @@ const pwRegexp =
 const emailRegexp =
   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-const UserSigninSchema: ObjectSchema, Pick<IUser,"email" | "password"> = object({
-  email: string()
-    .matches(emailRegexp, 'You have entered a valid email address!')
-    .required('Required'),
-  password: string()
-    .matches(
-      pwRegexp,
-      'Minimum eight characters, at least one upper case English letter, one lower case English letter, one number and one special character!'
-    )
-    .required('Required'),
-});
+const UserSigninSchema: ObjectSchema<Pick<IUser, 'email' | 'password'>> =
+  object({
+    email: string()
+      .matches(emailRegexp, 'You have entered a valid email address!')
+      .required('Required'),
+    password: string().required('Required'),
+  });
 
 export const Signin = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const handleSubmit = (values: IValues, action: FormikHelpers<IValues>) => {
+  const handleSubmit = (
+    values: Pick<IValues, 'email' | 'password'>,
+    action: FormikHelpers<Pick<IValues, 'email' | 'password'>>
+  ) => {
     dispatch(logInUser(values));
+    console.log(values);
     action.resetForm();
   };
   return (
@@ -40,14 +40,6 @@ export const Signin = () => {
         onSubmit={handleSubmit}
       >
         <Form>
-          <label htmlFor="firstName">First Name</label>
-          <Field id="name" name="name" placeholder="John" />
-          <ErrorMessage name="name" />
-
-          <label htmlFor="lastName">Last Name</label>
-          <Field id="lastname" name="lastname" placeholder="Doe" />
-          <ErrorMessage name="lastname" />
-
           <label htmlFor="email">Email</label>
           <Field
             id="email"

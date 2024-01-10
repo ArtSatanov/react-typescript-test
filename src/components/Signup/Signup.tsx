@@ -1,4 +1,4 @@
-import { ISignupValues, IUser } from '../../interfaces/interfaces';
+import { IUser, IValues } from '../../interfaces/interfaces';
 import { Formik, Field, Form, FormikHelpers, ErrorMessage } from 'formik';
 import { object, string, ObjectSchema } from 'yup';
 import { AppDispatch } from '../../services/redux/store';
@@ -27,10 +27,7 @@ const UserSignupSchema: ObjectSchema<IUser> = object({
 export const Signup = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const handleSubmit = (
-    values: ISignupValues,
-    action: FormikHelpers<ISignupValues>
-  ) => {
+  const handleSubmit = (values: IValues, action: FormikHelpers<IValues>) => {
     dispatch(signUpUser(values));
     action.resetForm();
   };
