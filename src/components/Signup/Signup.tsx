@@ -1,4 +1,4 @@
-import { IValues, IUser } from '../../interfaces/interfaces';
+import { ISignupValues, IUser } from '../../interfaces/interfaces';
 import { Formik, Field, Form, FormikHelpers, ErrorMessage } from 'formik';
 import { object, string, ObjectSchema } from 'yup';
 import { AppDispatch } from '../../services/redux/store';
@@ -10,7 +10,7 @@ const pwRegexp =
 const emailRegexp =
   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-const UserSigninSchema: ObjectSchema<IUser> = object({
+const UserSignupSchema: ObjectSchema<IUser> = object({
   name: string().required('Required'),
   lastname: string(),
   email: string()
@@ -24,16 +24,20 @@ const UserSigninSchema: ObjectSchema<IUser> = object({
     .required('Required'),
 });
 
-export const Signin = () => {
+export const Signup = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const handleSubmit = (values: IValues, action: FormikHelpers<IValues>) => {
+
+  const handleSubmit = (
+    values: ISignupValues,
+    action: FormikHelpers<ISignupValues>
+  ) => {
     dispatch(signUpUser(values));
     action.resetForm();
   };
 
   return (
     <div>
-      <h1>Signin</h1>
+      <h1>Signup</h1>
       <Formik
         initialValues={{
           name: '',
@@ -41,7 +45,7 @@ export const Signin = () => {
           email: '',
           password: '',
         }}
-        validationSchema={UserSigninSchema}
+        validationSchema={UserSignupSchema}
         onSubmit={handleSubmit}
       >
         <Form>

@@ -42,7 +42,7 @@ export interface IInitStateItems {
 }
 
 // ---------------------------------FORMS-------------------------
-export interface IValues {
+export interface ISignupValues {
   name: string;
   lastname: string;
   email: string;

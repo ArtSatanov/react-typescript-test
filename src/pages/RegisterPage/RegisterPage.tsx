@@ -1,9 +1,9 @@
-import { Signin } from '../../components/Singin/Signin';
+import { Signup } from '../../components/Signup/Signup';
 
 const RegisterPage = () => {
   return (
     <div>
-      <Signin />
+      <Signup />
     </div>
   );
 };
