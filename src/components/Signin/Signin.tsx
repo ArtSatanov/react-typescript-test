@@ -5,8 +5,6 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../services/redux/store';
 import { logInUser } from '../../services/redux/Operations/operations';
 
-const pwRegexp =
-  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
 const emailRegexp =
   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 

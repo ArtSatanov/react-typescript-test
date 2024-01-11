@@ -25,6 +25,7 @@ export interface IResponseUser {
   password: string;
   id: string;
   name: string;
+  status?: boolean;
 }
 // ------------------------------ITEMS--------------------------
 export interface IItem {

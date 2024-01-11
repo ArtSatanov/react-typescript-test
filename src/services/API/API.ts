@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { IUserForm } from '../../interfaces/interfaces';
+import { IResponseUser, IUserForm } from '../../interfaces/interfaces';
 
 axios.defaults.baseURL = 'https://6570ff4709586eff66422a89.mockapi.io/';
 
@@ -20,5 +20,13 @@ export async function getUser(id: string) {
 
 export async function setNewUser(userInfo: IUserForm) {
   const { data } = await axios.post(`users`, userInfo);
+  return data;
+}
+
+export async function userStatus(
+  id: string,
+  status: Pick<IResponseUser, 'status'>
+) {
+  const { data } = await axios.put(`/users/${id}`, status);
   return data;
 }

@@ -4,6 +4,7 @@ import {
   setNewUser,
   getUser,
   getListOfUsers,
+  userStatus,
 } from '../../API/API';
 import { RootState } from '../store';
 import { IUserForm, IResponseUser } from '../../../interfaces/interfaces';
@@ -65,8 +66,24 @@ export const logInUser = createAsyncThunk(
       console.log(userResp);
 
       const userLoginned = await getUser(userResp.id);
+      await userStatus(userResp.id, { status: true });
 
       return userLoginned;
+    } catch (e: any) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+// ------------------LogOut --------------------
+
+export const logOutUser = createAsyncThunk(
+  'logOutUser',
+  async (_, thunkAPI) => {
+    try {
+      const state: RootState = thunkAPI.getState();
+      await userStatus(state.auth.fakeToken, { status: false });
+      state.auth.fakeToken = null;
     } catch (e: any) {
       return thunkAPI.rejectWithValue(e.message);
     }
