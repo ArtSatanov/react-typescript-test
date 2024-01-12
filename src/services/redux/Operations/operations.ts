@@ -8,6 +8,7 @@ import {
 } from '../../API/API';
 import { RootState } from '../store';
 import { IUserForm, IResponseUser } from '../../../interfaces/interfaces';
+import { logOut } from '../authSlice/authSlice';
 
 export const fetchProducts = createAsyncThunk(
   'fetchProducts',
@@ -84,7 +85,6 @@ export const logOutUser = createAsyncThunk(
     try {
       const state: RootState = thunkAPI.getState();
       await userStatus(state.auth.fakeToken, { status: false });
-      state.auth.fakeToken = null;
     } catch (e: any) {
       return thunkAPI.rejectWithValue(e.message);
     }

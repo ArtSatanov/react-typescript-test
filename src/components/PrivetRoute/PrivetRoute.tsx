@@ -4,6 +4,6 @@ import { IPropsPage } from '../../interfaces/interfaces';
 
 export const PrivateRoute = ({ component, redirectTo = '/' }: IPropsPage) => {
   const { isLoggedIn, isRefreshing, isAdmin } = useAuth();
-  const shouldRedirect = !isLoggedIn && !isRefreshing && isAdmin;
+  const shouldRedirect = !isLoggedIn && !isRefreshing;
   return shouldRedirect ? <Navigate to={redirectTo} /> : component;
 };
