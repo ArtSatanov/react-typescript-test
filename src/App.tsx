@@ -8,35 +8,44 @@ import NotFound from './pages/NotFound/NotFound';
 import { RestrictedRoute } from './components/RestrictedRoute/RestrictedRoute';
 import { PrivateRoute } from './components/PrivetRoute/PrivetRoute';
 import { AdminPage } from './pages/Admin/AdminPage';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from './services/redux/store';
+import { useEffect } from 'react';
+import { useAuth } from './services/redux/Selectors/selectors';
+import { refreshUser } from './services/redux/Operations/operations';
 
 function App() {
-  return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route
-            path={routes.LOGIN}
-            element={
-              <RestrictedRoute redirectTo="/" component={<LoginPage />} />
-            }
-          />
-          <Route
-            path={routes.SIGNUP}
-            element={
-              <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
-            }
-          />
-          <Route
-            path="/admin"
-            element={
-              <PrivateRoute redirectTo="/login" component={<AdminPage />} />
-            }
-          />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </div>
+  const dispatch = useDispatch<AppDispatch>();
+  const { isRefreshing } = useAuth();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+  return isRefreshing ? (
+    <p>Refreshing user...</p>
+  ) : (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route
+          path={routes.LOGIN}
+          element={<RestrictedRoute redirectTo="/" component={<LoginPage />} />}
+        />
+        <Route
+          path={routes.SIGNUP}
+          element={
+            <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <PrivateRoute redirectTo="/login" component={<AdminPage />} />
+          }
+        />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   );
 }
 

@@ -21,14 +21,7 @@ const initialState: IInitState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {
-    logOut(state: IInitState): void {
-      state.isAdmin = false;
-      state.fakeToken = null;
-      state.isLoggedIn = false;
-      state.user = { email: null, password: null, name: null };
-    },
-  },
+  reducers: {},
   extraReducers: builder => {
     builder.addCase(signUpUser.pending, handlePendingAuth);
     builder.addCase(signUpUser.fulfilled, handleSignUpFulfilled);
@@ -42,5 +35,4 @@ const authSlice = createSlice({
   },
 });
 
-export const { logOut } = authSlice.actions;
 export const authReducer = authSlice.reducer;

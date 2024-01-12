@@ -26,7 +26,7 @@ export const signUpUser = createAsyncThunk(
   async (userInfo: IUserForm, thunkAPI) => {
     try {
       const userData = await setNewUser(userInfo);
-      console.log(userInfo);
+
       return userData;
     } catch (e: any) {
       return thunkAPI.rejectWithValue(e.message);
@@ -44,7 +44,9 @@ export const refreshUser = createAsyncThunk(
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
     try {
-      return await getUser(persistedToken);
+      const user = await getUser(persistedToken);
+      console.log(user);
+      return user;
     } catch (e: any) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -58,12 +60,11 @@ export const logInUser = createAsyncThunk(
   async (userInfo: IUserForm, thunkAPI) => {
     try {
       const usersList = await getListOfUsers();
-      console.log(userInfo.email);
+
       const userResp = usersList.find(
         (user: IResponseUser) =>
           user.email === userInfo.email && user.password === userInfo.password
       );
-      console.log(userResp);
 
       const userLoginned = await getUser(userResp.id);
       await userStatus(userResp.id, { status: true });
