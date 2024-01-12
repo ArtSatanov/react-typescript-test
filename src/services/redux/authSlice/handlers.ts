@@ -19,7 +19,7 @@ export const handleLogInFulfilled = (
   action: PayloadAction<IResponseUser>
 ) => {
   const { email, password, id, name } = action.payload;
-  if (email === 'admin') {
+  if (email === 'admin@gmail.com') {
     state.isAdmin = true;
   }
   state.user = { email: email, password: password, name: name };
@@ -35,7 +35,7 @@ export const handleRefreshUserFulfilled = (
   action: PayloadAction<IResponseUser>
 ) => {
   const { email, password, id, name } = action.payload;
-  if (email === 'admin') {
+  if (email === 'admin@gmail.com') {
     state.isAdmin = true;
   }
   state.user = { email: email, password: password, name: name };

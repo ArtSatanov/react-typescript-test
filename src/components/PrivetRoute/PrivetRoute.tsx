@@ -3,7 +3,7 @@ import { useAuth } from '../../services/redux/Selectors/selectors';
 import { IPropsPage } from '../../interfaces/interfaces';
 
 export const PrivateRoute = ({ component, redirectTo = '/' }: IPropsPage) => {
-  const { isLoggedIn, isRefreshing } = useAuth();
-  const shouldRedirect = !isLoggedIn && !isRefreshing;
+  const { isLoggedIn, isRefreshing, isAdmin } = useAuth();
+  const shouldRedirect = !isLoggedIn && !isRefreshing && isAdmin;
   return shouldRedirect ? <Navigate to={redirectTo} /> : component;
 };
