@@ -3,6 +3,7 @@ interface RoutesApp {
   LOGIN: string;
   SIGNUP: string;
   ADMIN: string;
+  USER: String;
 }
 
 export const routes: RoutesApp = {
@@ -10,4 +11,5 @@ export const routes: RoutesApp = {
   LOGIN: '/login',
   SIGNUP: '/signup',
   ADMIN: '/admin',
+  USER: '/user',
 };
