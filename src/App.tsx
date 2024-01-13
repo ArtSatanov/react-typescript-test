@@ -11,8 +11,8 @@ import { AdminPage } from './pages/Admin/AdminPage';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from './services/redux/store';
 import { useEffect } from 'react';
-import { useAuth } from './services/redux/Selectors/selectors';
-import { refreshUser } from './services/redux/Operations/operations';
+import { useAuth } from './services/redux/selectors/selectors';
+import { refreshUser } from './services/redux/operations/operations';
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();

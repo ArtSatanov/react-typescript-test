@@ -1,5 +1,5 @@
 import { ItemList } from '../../components/ItemsList/ItemList';
-import { useAuth } from '../../services/redux/Selectors/selectors';
+import { useAuth } from '../../services/redux/selectors/selectors';
 import { AdminPage } from '../Admin/AdminPage';
 import { Navigate } from 'react-router-dom';
 

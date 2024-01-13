@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { IInitState } from '../../../interfaces/interfaces';
-import { logInUser, signUpUser, refreshUser } from '../Operations/operations';
+import { logInUser, signUpUser, refreshUser } from '../operations/operations';
 import {
   handleSignUpFulfilled,
   handleLogInFulfilled,

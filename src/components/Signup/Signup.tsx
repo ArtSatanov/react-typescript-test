@@ -2,7 +2,7 @@ import { IUser, IValues } from '../../interfaces/interfaces';
 import { Formik, Field, Form, FormikHelpers, ErrorMessage } from 'formik';
 import { object, string, ObjectSchema } from 'yup';
 import { AppDispatch } from '../../services/redux/store';
-import { signUpUser } from '../../services/redux/Operations/operations';
+import { signUpUser } from '../../services/redux/operations/operations';
 import { useDispatch } from 'react-redux';
 
 const pwRegexp =

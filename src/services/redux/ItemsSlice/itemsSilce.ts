@@ -5,7 +5,7 @@ import {
   handleItemsPending,
   handleItemsRejected,
 } from './handlers';
-import { fetchProducts } from '../Operations/operations';
+import { fetchProducts } from '../operations/operations';
 
 const initialState: IInitStateItems = {
   items: [],

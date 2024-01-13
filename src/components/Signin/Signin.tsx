@@ -3,7 +3,7 @@ import { IValues, IUser } from '../../interfaces/interfaces';
 import { object, string, ObjectSchema } from 'yup';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../services/redux/store';
-import { logInUser } from '../../services/redux/Operations/operations';
+import { logInUser } from '../../services/redux/operations/operations';
 
 const emailRegexp =
   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;

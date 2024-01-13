@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../services/redux/store';
-import { logOutUser } from '../../services/redux/Operations/operations';
+import { logOutUser } from '../../services/redux/operations/operations';
 import { logOut } from '../../services/redux/authSlice/authSlice';
 
 export const LogOut = () => {
