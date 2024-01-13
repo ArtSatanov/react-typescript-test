@@ -56,3 +56,9 @@ export interface IUser {
   email: string | null;
   password: string | null;
 }
+
+// ------------------------NOTFOUND-----------------------------
+
+export interface INotFoundInitSate {
+  counter: number;
+}

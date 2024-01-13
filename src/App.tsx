@@ -13,6 +13,7 @@ import { AppDispatch } from './services/redux/store';
 import { useEffect } from 'react';
 import { useAuth } from './services/redux/selectors/selectors';
 import { refreshUser } from './services/redux/operations/operations';
+import { UserPage } from './pages/User/UserPage';
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
@@ -41,6 +42,12 @@ function App() {
           path="/admin"
           element={
             <PrivateRoute redirectTo="/login" component={<AdminPage />} />
+          }
+          />
+          <Route
+          path="/user"
+          element={
+            <PrivateRoute redirectTo="/login" component={<UserPage />} />
           }
         />
         <Route path="*" element={<NotFound />} />

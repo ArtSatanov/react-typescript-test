@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const User = () => {
+export const UserPage = () => {
   return (
     <div>User</div>
   )

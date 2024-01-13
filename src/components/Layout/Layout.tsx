@@ -1,19 +1,24 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { Navigation } from '../Navigation/Navigation';
-import { useSelector } from 'react-redux';
-import { selectUser } from '../../services/redux/selectors/selectors';
+import { useAuth } from '../../services/redux/selectors/selectors';
 import { LogOut } from '../LogOut/LogOut';
 
 export const Layout = () => {
-  const { name } = useSelector(selectUser);
+  const { isLoggedIn, user } = useAuth();
+  
+ 
 
   return (
     <>
       <header>
         <Navigation />
-        <p>Hi, {name}</p>
-        <LogOut />
+        {isLoggedIn && (
+          <div>
+            <p>Hi, {user.name}</p>
+            <LogOut />
+          </div>
+        )}
       </header>
       <main>
         <Suspense fallback={<p>LOADING ... </p>}>
