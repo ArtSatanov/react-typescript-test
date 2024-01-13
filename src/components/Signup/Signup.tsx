@@ -7,14 +7,12 @@ import { useDispatch } from 'react-redux';
 
 const pwRegexp =
   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
-const emailRegexp =
-  /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
 const UserSignupSchema: ObjectSchema<IUser> = object({
   name: string().required('Required'),
   lastname: string(),
   email: string()
-    .matches(emailRegexp, 'You have entered a valid email address!')
+    .email('You have entered a valid email address!')
     .required('Required'),
   password: string()
     .matches(

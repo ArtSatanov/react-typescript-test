@@ -5,13 +5,10 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../services/redux/store';
 import { logInUser } from '../../services/redux/operations/operations';
 
-const emailRegexp =
-  /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-
 const UserSigninSchema: ObjectSchema<Pick<IUser, 'email' | 'password'>> =
   object({
     email: string()
-      .matches(emailRegexp, 'You have entered a valid email address!')
+      .email('You have entered a valid email address!')
       .required('Required'),
     password: string().required('Required'),
   });
