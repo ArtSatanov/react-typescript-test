@@ -10,10 +10,10 @@ const NotFound = () => {
   const counter = useSelector(selectCounter);
   const dispatch = useDispatch<AppDispatch>();
 
-  useEffect((
+  useEffect(() => {
+    counter > 0 && setTimeout((()=>dispatch(countDown())),1000)
     
- 
- )=>{dispatch(countDown())},[dispatch])
+  }, [dispatch])
   return (
     <div>The page you're trying to reach out hasn't been found. ${counter}</div>
   )
