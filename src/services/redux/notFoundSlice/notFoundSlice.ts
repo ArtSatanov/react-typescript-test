@@ -9,7 +9,7 @@ const notFoundSlice = createSlice({
    name: 'notFound',
    initialState,
    reducers: {
-      counter(state: INotFoundInitSate): void {
+      countDown(state: INotFoundInitSate): void {
          setTimeout(() => (state.counter = state.counter-1),1000)
          
       },
@@ -17,5 +17,5 @@ const notFoundSlice = createSlice({
 });
 
 
-export const { counter } = notFoundSlice.actions;
+export const { countDown } = notFoundSlice.actions;
 export const notFoundReducer = notFoundSlice.reducer;

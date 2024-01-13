@@ -31,4 +31,4 @@ export const selectIsLoading = (state: RootState) => state.items.isLoading;
 export const selectError = (state: RootState) => state.items.error;
 
 // -----------------NotFound-------------------------
-export const selectConter = (stete: RootState) => stete.notFound.counter;
+export const selectCounter = (stete: RootState) => stete.notFound.counter;
