@@ -8,7 +8,6 @@ import {
 } from '../../API/API';
 import { RootState } from '../store';
 import { IUserForm, IResponseUser } from '../../../interfaces/interfaces';
-import { logOut } from '../authSlice/authSlice';
 
 export const fetchProducts = createAsyncThunk(
   'fetchProducts',
