@@ -1,7 +1,9 @@
-import React from 'react'
+import { ItemList } from '../../components/ItemsList/ItemList';
+import { useAuth } from '../../services/redux/selectors/selectors';
 
-export const UserPage = () => {
-  return (
-    <div>User</div>
-  )
-}
+const UserPage = () => {
+  const { isLoggedIn, token } = useAuth();
+  return <div>{isLoggedIn && token && <ItemList />}</div>;
+};
+
+export default UserPage;

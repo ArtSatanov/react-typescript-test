@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { INotFoundInitSate } from '../../../interfaces/interfaces';
 
 const initialState: INotFoundInitSate = {
-  counter: 5,
+  counter: 10,
 };
 
 const notFoundSlice = createSlice({

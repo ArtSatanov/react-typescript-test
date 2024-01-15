@@ -13,7 +13,8 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter basename="/react-typescript-test/">
+        <BrowserRouter>
+          {/* <BrowserRouter basename="/react-typescript-test/"> */}
           <App />
         </BrowserRouter>
       </PersistGate>
