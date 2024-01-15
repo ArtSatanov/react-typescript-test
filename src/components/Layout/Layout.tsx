@@ -28,7 +28,6 @@ export const Layout = () => {
             {isLoggedIn && (
               <div>
                 <p>Hi, {user.name}</p>
-                <LogOut />
               </div>
             )}
           </Toolbar>
