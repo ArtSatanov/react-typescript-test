@@ -1,23 +1,23 @@
 import { routes } from '../../const/routes';
-import { NavBar, NavButton, NavLinkSt } from './Navigation.styled';
+import { NavLink } from 'react-router-dom';
 
 export const Navigation = () => {
   return (
     <>
       <nav>
-        <NavBar>
-          <NavButton>
-            <NavLinkSt to="/" end data-name="Home">
+        <ul>
+          <li>
+            <NavLink to="/" end>
               Home
-            </NavLinkSt>
-          </NavButton>
-          <NavButton>
-            <NavLinkSt to={routes.LOGIN}>Login</NavLinkSt>
-          </NavButton>
-          <NavButton>
-            <NavLinkSt to={routes.SIGNUP}>Sign Up</NavLinkSt>
-          </NavButton>
-        </NavBar>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={routes.LOGIN}>Login</NavLink>
+          </li>
+          <li>
+            <NavLink to={routes.SIGNUP}>Sign Up</NavLink>
+          </li>
+        </ul>
       </nav>
     </>
   );
