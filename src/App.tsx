@@ -14,6 +14,27 @@ import { useEffect } from 'react';
 import { useAuth } from './services/redux/selectors/selectors';
 import { refreshUser } from './services/redux/operations/operations';
 import UserPage from './pages/User/UserPage';
+import { styled } from '@mui/material/styles';
+import { Box } from '@mui/material';
+
+const Container = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.up('mobile')]: {
+    minWidth: '320px',
+    maxWidth: '428px',
+    padding: '0 16px',
+    margin: '0 auto',
+  },
+  [theme.breakpoints.between('tablet', 'laptop')]: {
+    maxWidth: '768px',
+  },
+  [theme.breakpoints.between('laptop', 'desktop')]: {
+    maxWidth: '1024px',
+  },
+  [theme.breakpoints.up('desktop')]: {
+    maxWidth: '1158px',
+    padding: '0 15px',
+  },
+}));
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
@@ -22,37 +43,43 @@ function App() {
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
-  return isRefreshing ? (
-    <p>Refreshing user...</p>
-  ) : (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route
-          path={routes.LOGIN}
-          element={<RestrictedRoute redirectTo="/" component={<LoginPage />} />}
-        />
-        <Route
-          path={routes.SIGNUP}
-          element={
-            <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
-          }
-        />
-        <Route
-          path="/admin"
-          element={
-            <PrivateRoute redirectTo="/login" component={<AdminPage />} />
-          }
-        />
-        <Route
-          path="/user"
-          element={
-            <PrivateRoute redirectTo="/login" component={<UserPage />} />
-          }
-        />
-        <Route path="*" element={<NotFound />} />
-      </Route>
-    </Routes>
+  return (
+    <Container>
+      {isRefreshing ? (
+        <p>Refreshing user...</p>
+      ) : (
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route
+              path={routes.LOGIN}
+              element={
+                <RestrictedRoute redirectTo="/" component={<LoginPage />} />
+              }
+            />
+            <Route
+              path={routes.SIGNUP}
+              element={
+                <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
+              }
+            />
+            <Route
+              path="/admin"
+              element={
+                <PrivateRoute redirectTo="/login" component={<AdminPage />} />
+              }
+            />
+            <Route
+              path="/user"
+              element={
+                <PrivateRoute redirectTo="/login" component={<UserPage />} />
+              }
+            />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      )}
+    </Container>
   );
 }
 
