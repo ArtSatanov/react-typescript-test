@@ -61,8 +61,8 @@ function App() {
   }, [dispatch]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container>
+    <Container>
+      <ThemeProvider theme={theme}>
         {isRefreshing ? (
           <p>Refreshing user...</p>
         ) : (
@@ -100,8 +100,8 @@ function App() {
             </Route>
           </Routes>
         )}
-      </Container>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Container>
   );
 }
 
