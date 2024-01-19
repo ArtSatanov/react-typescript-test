@@ -1,20 +1,43 @@
-import { createTheme } from '@mui/material';
+import { PaletteMode, createTheme } from '@mui/material';
 
 // __palette
 
-const PRIMARY = { main: '#F6F6F6', dark: '#050505' };
-const SECONDARY = { main: '#1760a5', light: 'skyblue' };
-const ERROR = { main: '#1760a5', light: 'skyblue' };
-const INFO = { main: '#1760a5', light: 'skyblue' };
-
-const palette = {
-  primary: { ...PRIMARY },
-  secondary: { ...SECONDARY },
-  error: { ...ERROR },
-  info: { ...INFO },
-};
-
-// __breakpoints
+export const getDesignTokens = (mode: PaletteMode) => ({
+  palette: {
+    mode,
+    ...(mode === 'light'
+      ? {
+          // palette values for light mode
+          primary: {
+            main: '#fffbeb',
+          },
+          divider: '#fde68a',
+          background: {
+            default: '#fbbf24',
+            paper: '#fbbf24',
+          },
+          text: {
+            primary: '#000',
+            secondary: '#27272a',
+          },
+        }
+      : {
+          // palette values for dark mode
+          primary: {
+            main: '#dbf4ff',
+          },
+          divider: '#004282',
+          background: {
+            default: '#000e21',
+            paper: '#000e21',
+          },
+          text: {
+            primary: '#fff',
+            secondary: '#71717a',
+          },
+        }),
+  },
+});
 
 declare module '@mui/material/styles' {
   interface BreakpointOverrides {
@@ -37,6 +60,5 @@ const breakpoints = {
 // __ theme
 
 export const theme = createTheme({
-  palette,
   breakpoints,
 });

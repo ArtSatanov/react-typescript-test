@@ -8,14 +8,15 @@ import NotFound from './pages/NotFound/NotFound';
 import { RestrictedRoute } from './components/RestrictedRoute/RestrictedRoute';
 import { PrivateRoute } from './components/PrivetRoute/PrivetRoute';
 import { AdminPage } from './pages/Admin/AdminPage';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from './services/redux/store';
-import { useEffect } from 'react';
-import { useAuth } from './services/redux/selectors/selectors';
+import { useEffect, useMemo, useState } from 'react';
+import { selectTheme, useAuth } from './services/redux/selectors/selectors';
 import { refreshUser } from './services/redux/operations/operations';
 import UserPage from './pages/User/UserPage';
-import { styled } from '@mui/material/styles';
-import { Box } from '@mui/material';
+import { ThemeProvider, createTheme, styled } from '@mui/material/styles';
+import { Box, PaletteMode } from '@mui/material';
+import { getDesignTokens } from 'components/MainStyles/theme/theme';
 
 const Container = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('mobile')]: {
@@ -37,49 +38,70 @@ const Container = styled(Box)(({ theme }) => ({
 }));
 
 function App() {
+  const [mode, setMode] = useState('light');
   const dispatch = useDispatch<AppDispatch>();
   const { isRefreshing } = useAuth();
+  const darkMode = useSelector(selectTheme);
+
+  useMemo(() => {
+    if (darkMode) {
+      setMode('dark');
+    } else {
+      setMode('light');
+    }
+  }, [darkMode]);
+
+  const theme = useMemo(
+    () => createTheme(getDesignTokens(mode as PaletteMode)),
+    [mode]
+  );
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
+
   return (
-    <Container>
-      {isRefreshing ? (
-        <p>Refreshing user...</p>
-      ) : (
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route
-              path={routes.LOGIN}
-              element={
-                <RestrictedRoute redirectTo="/" component={<LoginPage />} />
-              }
-            />
-            <Route
-              path={routes.SIGNUP}
-              element={
-                <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
-              }
-            />
-            <Route
-              path="/admin"
-              element={
-                <PrivateRoute redirectTo="/login" component={<AdminPage />} />
-              }
-            />
-            <Route
-              path="/user"
-              element={
-                <PrivateRoute redirectTo="/login" component={<UserPage />} />
-              }
-            />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
-      )}
-    </Container>
+    <ThemeProvider theme={theme}>
+      <Container>
+        {isRefreshing ? (
+          <p>Refreshing user...</p>
+        ) : (
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route
+                path={routes.LOGIN}
+                element={
+                  <RestrictedRoute redirectTo="/" component={<LoginPage />} />
+                }
+              />
+              <Route
+                path={routes.SIGNUP}
+                element={
+                  <RestrictedRoute
+                    redirectTo="/"
+                    component={<RegisterPage />}
+                  />
+                }
+              />
+              <Route
+                path="/admin"
+                element={
+                  <PrivateRoute redirectTo="/login" component={<AdminPage />} />
+                }
+              />
+              <Route
+                path="/user"
+                element={
+                  <PrivateRoute redirectTo="/login" component={<UserPage />} />
+                }
+              />
+              <Route path="*" element={<NotFound />} />
+            </Route>
+          </Routes>
+        )}
+      </Container>
+    </ThemeProvider>
   );
 }
 

@@ -11,6 +11,7 @@ html {
  body {
   height: 100%;
   margin: 0;
+
   font-family: 'Play', sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;

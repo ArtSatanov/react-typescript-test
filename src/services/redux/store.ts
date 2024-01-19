@@ -14,11 +14,17 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { itemsReducer } from './itemsSlice/itemsSilce';
 import { notFoundReducer } from './notFoundSlice/notFoundSlice';
+import { themeReducer } from './themeSlice/themeSlice';
 
 const authPersistCfg = {
   key: 'auth',
   storage,
   whitelist: ['fakeToken'],
+};
+const themePersistCfg = {
+  key: 'theme',
+  storage,
+  whitelist: ['darkMode'],
 };
 
 export const store = configureStore({
@@ -26,6 +32,7 @@ export const store = configureStore({
     auth: persistReducer<any, any>(authPersistCfg, authReducer),
     items: itemsReducer,
     notFound: notFoundReducer,
+    theme: persistReducer<any, any>(themePersistCfg, themeReducer),
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
