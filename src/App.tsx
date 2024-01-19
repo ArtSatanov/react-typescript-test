@@ -15,7 +15,7 @@ import { selectTheme, useAuth } from './services/redux/selectors/selectors';
 import { refreshUser } from './services/redux/operations/operations';
 import UserPage from './pages/User/UserPage';
 import { ThemeProvider, createTheme, styled } from '@mui/material/styles';
-import { Box, PaletteMode } from '@mui/material';
+import { Box, CssBaseline, PaletteMode } from '@mui/material';
 import { getDesignTokens } from 'components/MainStyles/theme/theme';
 
 const Container = styled(Box)(({ theme }) => ({
@@ -48,14 +48,17 @@ function App() {
     [mode]
   );
 
-  useEffect(() => {
-    dispatch(refreshUser());
+  useMemo(() => {
     if (darkMode) {
       setMode('dark');
     } else {
       setMode('light');
     }
-  }, [darkMode, dispatch]);
+  }, [darkMode]);
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   return (
     <Container>

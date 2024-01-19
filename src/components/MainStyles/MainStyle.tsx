@@ -1,48 +1,57 @@
-import { createGlobalStyle } from 'styled-components';
 import 'modern-normalize';
 
-export const MainStyles = createGlobalStyle`
+import { GlobalStyles } from '@mui/material';
+import { theme } from './theme/theme';
 
-html {
-  margin: 0;
-  overscroll-behavior: none;
-}
-
- body {
-  height: 100%;
-  margin: 0;
-
-  font-family: 'Play', sans-serif;
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: 'Play', sans-serif;
-
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-`;
+export const inputGlobalStyles = (
+  <GlobalStyles
+    styles={{
+      html: {
+        margin: '0',
+        overscrollBehavior: 'none',
+      },
+      body: {
+        height: '100%',
+        margin: '0',
+        backgroundColor: (theme: any) => ({
+          backgroundColor: theme.background.default,
+        }),
+        fontFamily: 'Play, sans-serif',
+        fontWeight: '400',
+        webkitFontSmoothing: 'antialiased',
+        mozOsxFontSmoothing: 'grayscale',
+      },
+      ul: {
+        listStyle: 'none',
+        padding: '0',
+        margin: '0',
+      },
+      h1: {
+        margin: '0',
+      },
+      h2: {
+        margin: '0',
+      },
+      h3: {
+        margin: '0',
+      },
+      h4: {
+        margin: '0',
+      },
+      h5: {
+        margin: '0',
+      },
+      h6: {
+        margin: '0',
+      },
+      p: {
+        margin: '0',
+      },
+      img: {
+        display: 'block',
+        maxWidth: '100%',
+        height: 'auto',
+      },
+    }}
+  />
+);
