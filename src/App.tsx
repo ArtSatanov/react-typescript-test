@@ -48,17 +48,17 @@ function App() {
     [mode]
   );
 
-  useMemo(() => {
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  useEffect(() => {
     if (darkMode) {
       setMode('dark');
     } else {
       setMode('light');
     }
   }, [darkMode]);
-
-  useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
 
   return (
     <Container>
