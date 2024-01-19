@@ -43,14 +43,6 @@ function App() {
   const { isRefreshing } = useAuth();
   const darkMode = useSelector(selectTheme);
 
-  useMemo(() => {
-    if (darkMode) {
-      setMode('dark');
-    } else {
-      setMode('light');
-    }
-  }, [darkMode]);
-
   const theme = useMemo(
     () => createTheme(getDesignTokens(mode as PaletteMode)),
     [mode]
@@ -58,7 +50,12 @@ function App() {
 
   useEffect(() => {
     dispatch(refreshUser());
-  }, [dispatch]);
+    if (darkMode) {
+      setMode('dark');
+    } else {
+      setMode('light');
+    }
+  }, [darkMode, dispatch]);
 
   return (
     <Container>

@@ -7,7 +7,7 @@ import { store, persistor } from './services/redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import { MainStyles } from 'components/MainStyles/MainStyle';
-import { ThemeProvider } from '@mui/material';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 import { theme } from 'components/MainStyles/theme/theme';
 
 const root = ReactDOM.createRoot(
@@ -21,7 +21,8 @@ root.render(
           <BrowserRouter>
             {/* <BrowserRouter basename="/react-typescript-test/"> */}
             <App />
-            <MainStyles />
+            {/* <MainStyles /> */}
+            <CssBaseline />
           </BrowserRouter>
         </PersistGate>
       </Provider>

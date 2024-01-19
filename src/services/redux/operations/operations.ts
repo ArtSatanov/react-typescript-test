@@ -89,3 +89,11 @@ export const logOutUser = createAsyncThunk(
     }
   }
 );
+
+// -------------------- themeChanger--------------
+
+// export const asyncToggleTheme = () => dispatch => {
+//   const isDarkMode = !!JSON.parse(localStorage.getItem('darkMode'));
+//   localStorage.setItem('darkMode', !isDarkMode);
+//   dispatch(toggleTheme());
+// };

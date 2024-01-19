@@ -1,11 +1,21 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { Navigation } from '../Navigation/Navigation';
-import { useAuth } from '../../services/redux/selectors/selectors';
+import { selectTheme, useAuth } from '../../services/redux/selectors/selectors';
 import { LogOut } from '../LogOut/LogOut';
-import { AppBar, Box, InputBase, Toolbar, Typography } from '@mui/material';
+import {
+  AppBar,
+  Box,
+  IconButton,
+  InputBase,
+  Toolbar,
+  Typography,
+} from '@mui/material';
 import { styled } from '@mui/material/styles';
 import LocationSearchingSharpIcon from '@mui/icons-material/LocationSearchingSharp';
+import { toggleTheme } from 'services/redux/themeSlice/themeSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch } from 'services/redux/store';
 
 const StyledTB = styled(Toolbar)({
   display: 'flex',
@@ -34,16 +44,8 @@ const UserBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-// const 1= styled(Box)(({ theme }) => ({
-//   display: 'flex',
-//   alignItems: 'center',
-//   gap: '10px',
-//   [theme.breakpoints.between('mobile', 'tablet')]: {
-//     display: 'none',
-//   },
-// }));
-
 export const Layout = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const { isLoggedIn, user } = useAuth();
 
   return (
@@ -78,6 +80,10 @@ export const Layout = () => {
               <LogOut />
             </div>
           )}
+          <IconButton
+            onClick={() => dispatch(toggleTheme())}
+            color="secondary"
+          />
         </StyledTB>
       </AppBar>
       <main>
