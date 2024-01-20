@@ -7,8 +7,9 @@ import { store, persistor } from './services/redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import { inputGlobalStyles } from 'components/MainStyles/MainStyle';
-import { CssBaseline, ThemeProvider } from '@mui/material';
+
 import { theme } from 'components/MainStyles/theme/theme';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -22,7 +23,7 @@ root.render(
             {/* <BrowserRouter basename="/react-typescript-test/"> */}
             <App />
             {/* <MainStyles /> */}
-            {inputGlobalStyles}
+            {/* {inputGlobalStyles} */}
             <CssBaseline />
           </BrowserRouter>
         </PersistGate>
