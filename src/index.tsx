@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import { store, persistor } from './services/redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import { inputGlobalStyles } from 'components/MainStyles/MainStyle';
 
 import { theme } from 'components/MainStyles/theme/theme';
 import { CssBaseline, ThemeProvider } from '@mui/material';
@@ -22,8 +21,6 @@ root.render(
           <BrowserRouter>
             {/* <BrowserRouter basename="/react-typescript-test/"> */}
             <App />
-            {/* <MainStyles /> */}
-            {/* {inputGlobalStyles} */}
             <CssBaseline />
           </BrowserRouter>
         </PersistGate>

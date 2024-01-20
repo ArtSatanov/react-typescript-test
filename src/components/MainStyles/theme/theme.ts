@@ -1,3 +1,4 @@
+import { Palette } from '@mui/icons-material';
 import { PaletteMode, createTheme } from '@mui/material';
 
 // __palette
@@ -19,7 +20,8 @@ export const getDesignTokens = (mode: PaletteMode) => ({
           text: {
             primary: '#000',
             secondary: '#27272a',
-          },
+        },
+          
         }
       : {
           // palette values for dark mode
@@ -71,8 +73,7 @@ export const theme = createTheme({
       body: {
         height: '100%',
         margin: '0',
-        backgroundColor: mode.palette.background.default,
-  
+        backgroundColor: 'tomato',
         fontFamily: 'Play, sans-serif',
         fontWeight: '400',
         webkitFontSmoothing: 'antialiased',
