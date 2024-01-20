@@ -37,6 +37,11 @@ const Container = styled(Box)(({ theme }) => ({
   },
 }));
 
+const BoxBody = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.background.default,
+  
+}));
+
 function App() {
   const [mode, setMode] = useState('light');
   const dispatch = useDispatch<AppDispatch>();
@@ -61,6 +66,7 @@ function App() {
   }, [darkMode]);
 
   return (
+    <BoxBody>
     <Container>
       <ThemeProvider theme={theme}>
         {isRefreshing ? (
@@ -101,7 +107,8 @@ function App() {
           </Routes>
         )}
       </ThemeProvider>
-    </Container>
+      </Container>
+      </BoxBody>
   );
 }
 
