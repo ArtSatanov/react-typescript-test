@@ -18,6 +18,9 @@ root.render(
         <PersistGate loading={null} persistor={persistor}>
           <BrowserRouter>
             <App />
+            {/* <MainStyles /> */}
+            {inputGlobalStyles}
+            <CssBaseline />
           </BrowserRouter>
         </PersistGate>
       </ThemeProvider>

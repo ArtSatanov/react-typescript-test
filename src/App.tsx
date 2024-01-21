@@ -36,8 +36,9 @@ const Container = styled(Box)(({ theme }) => ({
   },
 }));
 
-const ContainerMain = styled(Box)(({ theme }) => ({
-  // backgroundColor: theme.palette.background.default,
+const BoxBody = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.background.default,
+  
 }));
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
   }, [dispatch]);
 
   return (
+    <BoxBody>
     <Container>
       <ContainerMain>
         {isRefreshing ? (
@@ -89,7 +91,7 @@ function App() {
             </Route>
           </Routes>
         )}
-      </ContainerMain>
+      </ThemeProvider>
     </Container>
   );
 }
