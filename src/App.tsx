@@ -8,14 +8,14 @@ import NotFound from './pages/NotFound/NotFound';
 import { RestrictedRoute } from './components/RestrictedRoute/RestrictedRoute';
 import { PrivateRoute } from './components/PrivetRoute/PrivetRoute';
 import { AdminPage } from './pages/Admin/AdminPage';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { AppDispatch } from './services/redux/store';
-import { useEffect, useMemo, useState } from 'react';
-import { selectTheme, useAuth } from './services/redux/selectors/selectors';
+import { useEffect } from 'react';
+import { useAuth } from './services/redux/selectors/selectors';
 import { refreshUser } from './services/redux/operations/operations';
 import UserPage from './pages/User/UserPage';
-import { ThemeProvider, createTheme, styled } from '@mui/material/styles';
-import { Box, CssBaseline, PaletteMode } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { Box } from '@mui/material';
 
 const Container = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('mobile')]: {
@@ -38,60 +38,52 @@ const Container = styled(Box)(({ theme }) => ({
 
 const BoxBody = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
-  
 }));
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
   const { isRefreshing } = useAuth();
-  const darkMode = useSelector(selectTheme);
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
   return (
-    <BoxBody>
     <Container>
-      <ContainerMain>
-        {isRefreshing ? (
-          <p>Refreshing user...</p>
-        ) : (
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Home />} />
-              <Route
-                path={routes.LOGIN}
-                element={
-                  <RestrictedRoute redirectTo="/" component={<LoginPage />} />
-                }
-              />
-              <Route
-                path={routes.SIGNUP}
-                element={
-                  <RestrictedRoute
-                    redirectTo="/"
-                    component={<RegisterPage />}
-                  />
-                }
-              />
-              <Route
-                path="/admin"
-                element={
-                  <PrivateRoute redirectTo="/login" component={<AdminPage />} />
-                }
-              />
-              <Route
-                path="/user"
-                element={
-                  <PrivateRoute redirectTo="/login" component={<UserPage />} />
-                }
-              />
-              <Route path="*" element={<NotFound />} />
-            </Route>
-          </Routes>
-        )}
-      </ThemeProvider>
+      {isRefreshing ? (
+        <p>Refreshing user...</p>
+      ) : (
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route
+              path={routes.LOGIN}
+              element={
+                <RestrictedRoute redirectTo="/" component={<LoginPage />} />
+              }
+            />
+            <Route
+              path={routes.SIGNUP}
+              element={
+                <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
+              }
+            />
+            <Route
+              path="/admin"
+              element={
+                <PrivateRoute redirectTo="/login" component={<AdminPage />} />
+              }
+            />
+            <Route
+              path="/user"
+              element={
+                <PrivateRoute redirectTo="/login" component={<UserPage />} />
+              }
+            />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      )}
     </Container>
   );
 }

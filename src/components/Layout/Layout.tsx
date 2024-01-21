@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { Navigation } from '../Navigation/Navigation';
-import { selectTheme, useAuth } from '../../services/redux/selectors/selectors';
+import { useAuth } from '../../services/redux/selectors/selectors';
 import { LogOut } from '../LogOut/LogOut';
 import {
   AppBar,
@@ -14,7 +14,7 @@ import {
 import { styled } from '@mui/material/styles';
 import LocationSearchingSharpIcon from '@mui/icons-material/LocationSearchingSharp';
 import { toggleTheme } from 'services/redux/themeSlice/themeSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { AppDispatch } from 'services/redux/store';
 
 const StyledTB = styled(Toolbar)({
