@@ -1,13 +1,10 @@
-import { PaletteMode, createTheme } from '@mui/material';
+import { PaletteMode } from '@mui/material';
 
-// __palette
-
-export const getDesignTokens = (mode: PaletteMode) => ({
+export const getDesignTokens = (mode: PaletteMode = 'light') => ({
   palette: {
     mode,
     ...(mode === 'light'
       ? {
-          // palette values for light mode
           primary: {
             main: '#fffbeb',
           },
@@ -22,7 +19,6 @@ export const getDesignTokens = (mode: PaletteMode) => ({
           },
         }
       : {
-          // palette values for dark mode
           primary: {
             main: '#dbf4ff',
           },
@@ -37,28 +33,4 @@ export const getDesignTokens = (mode: PaletteMode) => ({
           },
         }),
   },
-});
-
-declare module '@mui/material/styles' {
-  interface BreakpointOverrides {
-    xs: false;
-    sm: false;
-    md: false;
-    lg: false;
-    xl: false;
-    mobile: true;
-    tablet: true;
-    laptop: true;
-    desktop: true;
-  }
-}
-
-const breakpoints = {
-  values: { mobile: 0, tablet: 768, laptop: 1024, desktop: 1200 },
-};
-
-// __ theme
-
-export const theme = createTheme({
-  breakpoints,
 });

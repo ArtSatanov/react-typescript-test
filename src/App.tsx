@@ -16,7 +16,6 @@ import { refreshUser } from './services/redux/operations/operations';
 import UserPage from './pages/User/UserPage';
 import { ThemeProvider, createTheme, styled } from '@mui/material/styles';
 import { Box, CssBaseline, PaletteMode } from '@mui/material';
-import { getDesignTokens } from 'components/MainStyles/theme/theme';
 
 const Container = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('mobile')]: {
@@ -37,32 +36,22 @@ const Container = styled(Box)(({ theme }) => ({
   },
 }));
 
+const ContainerMain = styled(Box)(({ theme }) => ({
+  // backgroundColor: theme.palette.background.default,
+}));
+
 function App() {
-  const [mode, setMode] = useState('light');
   const dispatch = useDispatch<AppDispatch>();
   const { isRefreshing } = useAuth();
   const darkMode = useSelector(selectTheme);
-
-  const theme = useMemo(
-    () => createTheme(getDesignTokens(mode as PaletteMode)),
-    [mode]
-  );
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  useEffect(() => {
-    if (darkMode) {
-      setMode('dark');
-    } else {
-      setMode('light');
-    }
-  }, [darkMode]);
-
   return (
     <Container>
-      <ThemeProvider theme={theme}>
+      <ContainerMain>
         {isRefreshing ? (
           <p>Refreshing user...</p>
         ) : (
@@ -100,7 +89,7 @@ function App() {
             </Route>
           </Routes>
         )}
-      </ThemeProvider>
+      </ContainerMain>
     </Container>
   );
 }
