@@ -1,7 +1,6 @@
 import {
   ThemeProvider as MUIThemeProvider,
   createTheme,
-  StyledEngineProvider,
 } from '@mui/material/styles';
 import { useEffect, useMemo, useState } from 'react';
 import { CustomTheme } from './themeInterfaces';
