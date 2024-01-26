@@ -33,7 +33,7 @@ export const Navigation = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const dispatch = useDispatch<AppDispatch>();
   const darkMode = useSelector(selectTheme);
-  const { isLoggedIn, user } = useAuth();
+  const { isLoggedIn, user, isAdmin } = useAuth();
 
   const open = Boolean(anchorEl);
 
@@ -90,7 +90,7 @@ export const Navigation = () => {
                   bgcolor: 'primary.main',
                 }}
               >
-                {!isLoggedIn ? 'M' : user.name.split('')[0]}
+                {!isLoggedIn ? 'M' : user.name.split('')[0].toUpperCase()}
               </Avatar>
             </IconButton>
           </Tooltip>
@@ -129,9 +129,43 @@ export const Navigation = () => {
           transformOrigin={{ horizontal: 'right', vertical: 'top' }}
           anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         >
-          <MenuItem onClick={handleClose}>
-            <Avatar /> My account
-          </MenuItem>
+          {isLoggedIn && isAdmin && (
+            <MenuItem onClick={handleClose}>
+              <Link
+                component={NavLink}
+                to={routes.ADMIN}
+                sx={{
+                  textDecoration: 'none',
+                  fontWeight: 400,
+                  color: 'text.primary',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'left',
+                }}
+              >
+                <Avatar /> My account
+              </Link>
+            </MenuItem>
+          )}
+
+          {isLoggedIn && !isAdmin && (
+            <MenuItem onClick={handleClose}>
+              <Link
+                component={NavLink}
+                to={'/user'}
+                sx={{
+                  textDecoration: 'none',
+                  fontWeight: 400,
+                  color: 'text.primary',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'left',
+                }}
+              >
+                <Avatar /> My account
+              </Link>
+            </MenuItem>
+          )}
           <Divider />
 
           {!isLoggedIn ? (

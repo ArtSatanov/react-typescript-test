@@ -16,6 +16,7 @@ import { refreshUser } from './services/redux/operations/operations';
 import UserPage from './pages/User/UserPage';
 import { styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
+import { Loader } from 'components/Loader/Loader';
 
 const Container = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('mobile')]: {
@@ -47,7 +48,9 @@ function App() {
   return (
     <Container>
       {isRefreshing ? (
-        <p>Refreshing user...</p>
+        <>
+          <Loader />
+        </>
       ) : (
         <Routes>
           <Route path="/" element={<Layout />}>

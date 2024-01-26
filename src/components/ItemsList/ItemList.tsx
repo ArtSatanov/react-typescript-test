@@ -32,6 +32,7 @@ export const ItemList = () => {
       controller.abort();
     };
   }, [dispatch]);
+
   return (
     <div>
       {isLoading && <Loader />}
@@ -51,6 +52,7 @@ export const ItemList = () => {
                   maxWidth: 350,
                   margin: 'auto',
                   minHeight: '100%',
+                  objectFit: 'cover',
                   transition: 'transform 250ms cubic-bezier(0.4, 0, 0.2, 1)',
                   ':hover': {
                     transform: 'scale(1.03)',
@@ -82,33 +84,3 @@ export const ItemList = () => {
     </div>
   );
 };
-
-// <ul>
-//   <Grid
-//     container
-//     rowSpacing={2}
-//     columnSpacing={{ mobile: 1, tablet: 2, laptop: 3 }}
-//   >
-//     {items.map((item: IItem) => (
-//       <li key={item.id}>
-//         <Card sx={{ maxWidth: 345 }}>
-//           <CardActionArea>
-//             <CardMedia
-//               component="img"
-//               image={item.avatar}
-//               alt={item.name}
-//             />
-//             <CardContent>
-//               <Typography gutterBottom variant="h5" component="div">
-//                 {item.name}
-//               </Typography>
-//               <Typography variant="body2" color="text.secondary">
-//                 {item.description}
-//               </Typography>
-//             </CardContent>
-//           </CardActionArea>
-//         </Card>
-//       </li>
-//     ))}
-//   </Grid>
-// </ul>;
