@@ -3,76 +3,39 @@ import { Suspense } from 'react';
 import { Navigation } from '../Navigation/Navigation';
 import { useAuth } from '../../services/redux/selectors/selectors';
 import { LogOut } from '../LogOut/LogOut';
-import {
-  AppBar,
-  Box,
-  IconButton,
-  InputBase,
-  Toolbar,
-  Typography,
-} from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { InputBase, Typography } from '@mui/material';
+import { StyledTB, Search, AppBarStyled } from './Layout.styled';
+
 import LocationSearchingSharpIcon from '@mui/icons-material/LocationSearchingSharp';
-import { toggleTheme } from 'services/redux/themeSlice/themeSlice';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from 'services/redux/store';
-
-const StyledTB = styled(Toolbar)({
-  display: 'flex',
-  justifyContent: 'space-between',
-  cursor: 'pointer',
-});
-
-const Search = styled('div')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'left',
-  gap: '2%',
-  backgroundColor: 'white',
-  padding: '0 10px',
-  // borderRadius: theme.shape.borderRadius,
-  width: '40%',
-  borderRadius: '10%',
-}));
-
-const UserBox = styled(Box)(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  gap: '10px',
-  [theme.breakpoints.between('mobile', 'tablet')]: {
-    display: 'none',
-  },
-}));
+import { Loader } from 'components/Loader/Loader';
 
 export const Layout = () => {
-  const dispatch = useDispatch<AppDispatch>();
   const { isLoggedIn, user } = useAuth();
 
   return (
     <>
-      <AppBar
-        position="sticky"
-        color="primary"
-        // sx={{
-        //   ':hover': {
-        //     backgroundColor: theme.palette.primary.dark,
-        //   },
-        // }}
-      >
+      <AppBarStyled position="sticky">
         <StyledTB>
           <Typography
-            variant="h4"
-            component="h2"
-            sx={{ display: { mobile: 'none', tablet: 'block' } }}
+            sx={{
+              display: {
+                mobile: 'none',
+                tablet: 'block',
+                fontSize: '20px',
+                fontWeight: 600,
+              },
+            }}
           >
-            ReactTest
+            <span style={{ color: '#9BB537' }}>React</span>Test
           </Typography>
 
           <Search>
-            <LocationSearchingSharpIcon />
-            <InputBase placeholder="search..." />
+            <LocationSearchingSharpIcon sx={{ color: 'black' }} />
+            <InputBase
+              placeholder="search..."
+              sx={{ color: '#1E1E1E', width: '100%' }}
+            />
           </Search>
-
           <Navigation />
           {isLoggedIn && (
             <div>
@@ -80,14 +43,10 @@ export const Layout = () => {
               <LogOut />
             </div>
           )}
-          <IconButton
-            onClick={() => dispatch(toggleTheme())}
-            color="secondary"
-          />
         </StyledTB>
-      </AppBar>
+      </AppBarStyled>
       <main>
-        <Suspense fallback={<p>LOADING ... </p>}>
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </main>

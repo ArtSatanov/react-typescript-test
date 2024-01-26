@@ -36,10 +36,6 @@ const Container = styled(Box)(({ theme }) => ({
   },
 }));
 
-const BoxBody = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.background.default,
-}));
-
 function App() {
   const dispatch = useDispatch<AppDispatch>();
   const { isRefreshing } = useAuth();
