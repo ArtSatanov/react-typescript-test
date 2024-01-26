@@ -1,9 +1,9 @@
 interface RoutesApp {
+  USER: String;
   HOME: string;
   LOGIN: string;
   SIGNUP: string;
   ADMIN: string;
-  USER: String;
 }
 
 export const routes: RoutesApp = {
