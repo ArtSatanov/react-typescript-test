@@ -6,7 +6,7 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import NotFound from './pages/NotFound/NotFound';
 import { RestrictedRoute } from './components/RestrictedRoute/RestrictedRoute';
-import { PrivateRoute } from './components/PrivetRoute/PrivetRoute';
+import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 import { AdminPage } from './pages/Admin/AdminPage';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from './services/redux/store';

@@ -10,7 +10,6 @@ import { AppDispatch } from '../../services/redux/store';
 import { Loader } from '../Loader/Loader';
 import { IItem } from '../../interfaces/interfaces';
 import {
-  Box,
   Card,
   CardActionArea,
   CardContent,
@@ -37,17 +36,36 @@ export const ItemList = () => {
     <div>
       {isLoading && <Loader />}
       {!isLoading && error === 'canceled' && items.length !== 0 && (
-        <Grid container spacing={3}>
+        <Grid
+          container
+          direction="row"
+          justifyContent="space-evenly"
+          sx={{
+            marginTop: 1,
+          }}
+        >
           {items.map((item: IItem) => (
-            <Grid item mobile={12} tablet={4}>
-              <Card sx={{ maxWidth: 345 }} key={item.id}>
+            <Grid item mobile={12} tablet={4} sx={{ padding: '5px 2px' }}>
+              <Card
+                sx={{
+                  maxWidth: 350,
+                  margin: 'auto',
+                  minHeight: '100%',
+                  transition: 'transform 250ms cubic-bezier(0.4, 0, 0.2, 1)',
+                  ':hover': {
+                    transform: 'scale(1.03)',
+                    cursor: 'zoom-in',
+                  },
+                }}
+                key={item.id}
+              >
                 <CardActionArea>
                   <CardMedia
                     component="img"
                     image={item.avatar}
                     alt={item.name}
                   />
-                  <CardContent>
+                  <CardContent sx={{ minHeight: '40%' }}>
                     <Typography gutterBottom variant="h5" component="div">
                       {item.name}
                     </Typography>
