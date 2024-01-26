@@ -10,6 +10,7 @@ import { AppDispatch } from '../../services/redux/store';
 import { Loader } from '../Loader/Loader';
 import { IItem } from '../../interfaces/interfaces';
 import {
+  Box,
   Card,
   CardActionArea,
   CardContent,
@@ -36,32 +37,60 @@ export const ItemList = () => {
     <div>
       {isLoading && <Loader />}
       {!isLoading && error === 'canceled' && items.length !== 0 && (
-        <ul>
-          <Grid container spacing={2}>
-            {items.map((item: IItem) => (
-              <li key={item.id}>
-                <Card sx={{ maxWidth: 345 }}>
-                  <CardActionArea>
-                    <CardMedia
-                      component="img"
-                      image={item.avatar}
-                      alt={item.name}
-                    />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
-                        {item.name}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {item.description}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </li>
-            ))}
-          </Grid>
-        </ul>
+        <Grid container spacing={3}>
+          {items.map((item: IItem) => (
+            <Grid item mobile={12} tablet={4}>
+              <Card sx={{ maxWidth: 345 }} key={item.id}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    image={item.avatar}
+                    alt={item.name}
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      {item.name}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {item.description}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
       )}
     </div>
   );
 };
+
+// <ul>
+//   <Grid
+//     container
+//     rowSpacing={2}
+//     columnSpacing={{ mobile: 1, tablet: 2, laptop: 3 }}
+//   >
+//     {items.map((item: IItem) => (
+//       <li key={item.id}>
+//         <Card sx={{ maxWidth: 345 }}>
+//           <CardActionArea>
+//             <CardMedia
+//               component="img"
+//               image={item.avatar}
+//               alt={item.name}
+//             />
+//             <CardContent>
+//               <Typography gutterBottom variant="h5" component="div">
+//                 {item.name}
+//               </Typography>
+//               <Typography variant="body2" color="text.secondary">
+//                 {item.description}
+//               </Typography>
+//             </CardContent>
+//           </CardActionArea>
+//         </Card>
+//       </li>
+//     ))}
+//   </Grid>
+// </ul>;
