@@ -13,7 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Logout from '@mui/icons-material/Logout';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectTheme } from 'services/redux/selectors/selectors';
+import { selectTheme, useAuth } from 'services/redux/selectors/selectors';
 import { Link, Switch } from '@mui/material';
 import { AppDispatch } from 'services/redux/store';
 import styled from '@emotion/styled';
@@ -33,7 +33,10 @@ export const Navigation = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const dispatch = useDispatch<AppDispatch>();
   const darkMode = useSelector(selectTheme);
+  const { isLoggedIn, user } = useAuth();
+
   const open = Boolean(anchorEl);
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -87,7 +90,7 @@ export const Navigation = () => {
                   bgcolor: 'primary.main',
                 }}
               >
-                M
+                {!isLoggedIn ? 'M' : user.name.split('')[0]}
               </Avatar>
             </IconButton>
           </Tooltip>
@@ -130,50 +133,63 @@ export const Navigation = () => {
             <Avatar /> My account
           </MenuItem>
           <Divider />
-          <MenuItem onClick={handleClose}>
-            <Link
-              component={NavLink}
-              to={routes.SIGNUP}
-              sx={{
-                textDecoration: 'none',
-                fontWeight: 400,
-                color: 'text.primary',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'left',
-              }}
-            >
+
+          {!isLoggedIn ? (
+            <>
+              <MenuItem onClick={handleClose}>
+                <Link
+                  component={NavLink}
+                  to={routes.SIGNUP}
+                  sx={{
+                    textDecoration: 'none',
+                    fontWeight: 400,
+                    color: 'text.primary',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'left',
+                  }}
+                >
+                  <ListItemIcon>
+                    <PersonAdd
+                      fontSize="small"
+                      sx={{ color: 'text.primary' }}
+                    />
+                  </ListItemIcon>
+                  Sign up
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link
+                  component={NavLink}
+                  to={routes.LOGIN}
+                  sx={{
+                    textDecoration: 'none',
+                    fontWeight: 400,
+                    color: 'text.primary',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'left',
+                  }}
+                >
+                  <ListItemIcon>
+                    <LoginIcon
+                      fontSize="small"
+                      sx={{ color: 'text.primary' }}
+                    />
+                  </ListItemIcon>
+                  Sign in
+                </Link>
+              </MenuItem>
+            </>
+          ) : (
+            <MenuItem onClick={handlerLogout}>
               <ListItemIcon>
-                <PersonAdd fontSize="small" sx={{ color: 'text.primary' }} />
+                <Logout fontSize="small" sx={{ color: 'text.primary' }} />
               </ListItemIcon>
-              Sign up
-            </Link>
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <Link
-              component={NavLink}
-              to={routes.LOGIN}
-              sx={{
-                textDecoration: 'none',
-                fontWeight: 400,
-                color: 'text.primary',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'left',
-              }}
-            >
-              <ListItemIcon>
-                <LoginIcon fontSize="small" sx={{ color: 'text.primary' }} />
-              </ListItemIcon>
-              Sign in
-            </Link>
-          </MenuItem>
-          <MenuItem onClick={handlerLogout}>
-            <ListItemIcon>
-              <Logout fontSize="small" sx={{ color: 'text.primary' }} />
-            </ListItemIcon>
-            Logout
-          </MenuItem>
+              Logout
+            </MenuItem>
+          )}
+
           <MenuItem>
             <SwitcherBox>
               {darkMode ? (

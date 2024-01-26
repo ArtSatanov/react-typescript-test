@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import { AppBar, Box, Toolbar } from '@mui/material';
+import { AppBar, Toolbar } from '@mui/material';
 
 export const StyledTB = styled(Toolbar)({
   display: 'flex',
