@@ -86,7 +86,7 @@ export const Navigation = () => {
                 sx={{
                   width: 32,
                   height: 32,
-                  color: '#9BB537',
+                  color: 'divider',
                   bgcolor: 'primary.main',
                 }}
               >

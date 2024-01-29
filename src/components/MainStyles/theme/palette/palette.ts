@@ -8,7 +8,7 @@ export const getDesignTokens = (mode: PaletteMode) => ({
           primary: {
             main: '#FFFFFF',
           },
-          divider: '#94b340',
+          divider: '#038532',
           background: {
             default: '#FFFFFF',
             paper: '#1E1E1E',
@@ -23,7 +23,7 @@ export const getDesignTokens = (mode: PaletteMode) => ({
           primary: {
             main: '#1E1E1E',
           },
-          divider: '#94b340',
+          divider: '#038532',
           background: {
             default: '#1E1E1E',
             paper: '#969696',

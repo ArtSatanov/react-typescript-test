@@ -1,18 +1,15 @@
-import { IUser, IValues } from '../../interfaces/interfaces';
-import {
-  Formik,
-  Field,
-  Form,
-  FormikHelpers,
-  ErrorMessage,
-  useFormik,
-} from 'formik';
+import { IUser, IValues } from '../../../interfaces/interfaces';
+import { FormikHelpers, useFormik } from 'formik';
 import { object, string, ObjectSchema } from 'yup';
-import { AppDispatch } from '../../services/redux/store';
-import { signUpUser } from '../../services/redux/operations/operations';
+import { AppDispatch } from '../../../services/redux/store';
+import { signUpUser } from '../../../services/redux/operations/operations';
 import { useDispatch } from 'react-redux';
-import { Box, Button, TextField } from '@mui/material';
-import { StyledBox, StyledForm, StyledTextField } from './Signup.styled';
+import { TextField } from '@mui/material';
+import {
+  StyledBox,
+  StyledBtn,
+  StyledForm,
+} from '../FormStyles/FormsComponents.styled';
 
 const pwRegexp =
   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
@@ -34,10 +31,6 @@ const UserSignupSchema: ObjectSchema<IUser> = object({
 export const Signup = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  // const handleSubmit = (values: IValues, action: FormikHelpers<IValues>) => {
-  //   dispatch(signUpUser(values));
-  //   action.resetForm();
-  // };
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -56,7 +49,7 @@ export const Signup = () => {
     <StyledBox>
       <h1>Signup</h1>
       <StyledForm onSubmit={formik.handleSubmit}>
-        <StyledTextField
+        <TextField
           fullWidth
           id="name"
           name="name"
@@ -100,65 +93,10 @@ export const Signup = () => {
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
         />
-        <Button
-          variant="contained"
-          fullWidth
-          type="submit"
-          sx={{ color: '#9BB537', fontSize: '18px', fontWeight: 600 }}
-        >
+        <StyledBtn variant="contained" type="submit">
           Submit
-        </Button>
+        </StyledBtn>
       </StyledForm>
     </StyledBox>
   );
 };
-
-// export const Signup = () => {
-//   const dispatch = useDispatch<AppDispatch>();
-
-//   const handleSubmit = (values: IValues, action: FormikHelpers<IValues>) => {
-//     dispatch(signUpUser(values));
-//     action.resetForm();
-//   };
-
-//   return (
-//     <StyledBox>
-//       <h1>Signup</h1>
-//       <Formik
-//         initialValues={{
-//           name: '',
-//           lastname: '',
-//           email: '',
-//           password: '',
-//         }}
-//         validationSchema={UserSignupSchema}
-//         onSubmit={handleSubmit}
-//       >
-//         <Form>
-//           <label htmlFor="firstName">First Name</label>
-//           <Field id="name" name="name" placeholder="John" />
-//           <ErrorMessage name="name" />
-
-//           <label htmlFor="lastName">Last Name</label>
-//           <Field id="lastname" name="lastname" placeholder="Doe" />
-//           <ErrorMessage name="lastname" />
-
-//           <label htmlFor="email">Email</label>
-//           <Field
-//             id="email"
-//             name="email"
-//             placeholder="john@acme.com"
-//             type="email"
-//           />
-//           <ErrorMessage name="email" />
-
-//           <label htmlFor="password">Password</label>
-//           <Field id="password" name="password" placeholder="********" />
-//           <ErrorMessage name="password" />
-
-//           <button type="submit">Submit</button>
-//         </Form>
-//       </Formik>
-//     </StyledBox>
-//   );
-// };

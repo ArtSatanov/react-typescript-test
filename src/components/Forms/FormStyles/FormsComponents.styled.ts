@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import { Box, TextField } from '@mui/material';
+import { Box, Button } from '@mui/material';
 
 export const StyledBox = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -16,14 +16,6 @@ export const StyledBox = styled(Box)(({ theme }) => ({
   margin: '10px auto 50px',
   paddingTop: '20px',
 }));
-export const StyledTextField = styled(TextField)(({ theme }) => ({
-  borderColor: `${theme.palette.divider}`,
-  //   border: `1px solid ${theme.palette.divider}`,
-  borderRadius: '2%',
-  backgroundColor: theme.palette.background.paper,
-  //   margin: '10px auto 50px',
-  //   paddingTop: '20px',
-}));
 
 export const StyledForm = styled('form')(({ theme }) => ({
   display: 'flex',
@@ -31,6 +23,22 @@ export const StyledForm = styled('form')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   gap: '20px',
+  padding: '0 5px',
   width: '100%',
   color: theme.palette.divider,
+}));
+
+export const StyledBtn = styled(Button)(({ theme }) => ({
+  color: theme.palette.divider,
+  fontSize: '18px',
+  fontWeight: 600,
+  borderRadius: '30px',
+  padding: '5px 30px',
+  marginBottom: '10px',
+  transition:
+    'opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),transform 250ms cubic-bezier(0.4, 0, 0.2, 1)',
+  ':hover': {
+    opacity: 1,
+    transform: 'scale(1.02)',
+  },
 }));

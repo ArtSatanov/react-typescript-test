@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { Navigation } from '../Navigation/Navigation';
-import { InputBase, Typography } from '@mui/material';
-import { StyledTB, Search, AppBarStyled } from './Layout.styled';
+import { AppBar, InputBase, Typography } from '@mui/material';
+import { StyledTB, Search } from './Layout.styled';
 
 import LocationSearchingSharpIcon from '@mui/icons-material/LocationSearchingSharp';
 import { Loader } from 'components/Loader/Loader';
@@ -10,7 +10,7 @@ import { Loader } from 'components/Loader/Loader';
 export const Layout = () => {
   return (
     <>
-      <AppBarStyled position="sticky">
+      <AppBar position="sticky">
         <StyledTB>
           <Typography
             sx={{
@@ -19,10 +19,11 @@ export const Layout = () => {
                 tablet: 'block',
                 fontSize: '20px',
                 fontWeight: 600,
+                color: 'text.primary',
               },
             }}
           >
-            <span style={{ color: '#9BB537' }}>React</span>Test
+            <span style={{ color: '#038532' }}>React</span>Test
           </Typography>
 
           <Search>
@@ -34,7 +35,7 @@ export const Layout = () => {
           </Search>
           <Navigation />
         </StyledTB>
-      </AppBarStyled>
+      </AppBar>
       <main>
         <Suspense fallback={<Loader />}>
           <Outlet />

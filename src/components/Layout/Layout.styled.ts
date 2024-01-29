@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import { AppBar, Toolbar } from '@mui/material';
+import { Toolbar } from '@mui/material';
 
 export const StyledTB = styled(Toolbar)({
   display: 'flex',
@@ -12,13 +12,8 @@ export const Search = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'left',
   gap: '2%',
-  backgroundColor: 'white',
+  backgroundColor: theme.palette.text.primary,
   padding: '0 10px',
   width: '40%',
   borderRadius: '2%',
-}));
-
-export const AppBarStyled = styled(AppBar)(({ theme }) => ({
-  backgroundColor: theme.palette.background.paper,
-  color: theme.palette.primary.main,
 }));

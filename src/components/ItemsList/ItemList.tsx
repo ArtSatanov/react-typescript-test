@@ -46,7 +46,13 @@ export const ItemList = () => {
           }}
         >
           {items.map((item: IItem) => (
-            <Grid item mobile={12} tablet={4} sx={{ padding: '5px 2px' }}>
+            <Grid
+              item
+              mobile={12}
+              tablet={4}
+              sx={{ padding: '5px 2px' }}
+              key={item.id}
+            >
               <Card
                 sx={{
                   maxWidth: 350,
@@ -59,7 +65,6 @@ export const ItemList = () => {
                     cursor: 'zoom-in',
                   },
                 }}
-                key={item.id}
               >
                 <CardActionArea>
                   <CardMedia
