@@ -130,46 +130,51 @@ export const Navigation = () => {
           anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         >
           {isLoggedIn && isAdmin && (
-            <MenuItem onClick={handleClose}>
-              <Link
-                component={NavLink}
-                to={routes.ADMIN}
-                sx={{
-                  textDecoration: 'none',
-                  fontWeight: 400,
-                  color: 'text.primary',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'left',
-                }}
-              >
-                <Avatar /> My account
-              </Link>
-            </MenuItem>
+            <Box key={Math.random() * 100}>
+              <MenuItem onClick={handleClose} key={Math.random() * 100}>
+                <Avatar />
+                <Link
+                  component={NavLink}
+                  to={routes.ADMIN}
+                  sx={{
+                    textDecoration: 'none',
+                    fontWeight: 400,
+                    color: 'text.primary',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'left',
+                  }}
+                >
+                  My account
+                </Link>
+              </MenuItem>
+            </Box>
           )}
 
           {isLoggedIn && !isAdmin && (
-            <MenuItem onClick={handleClose}>
-              <Link
-                component={NavLink}
-                to={'/user'}
-                sx={{
-                  textDecoration: 'none',
-                  fontWeight: 400,
-                  color: 'text.primary',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'left',
-                }}
-              >
-                <Avatar /> My account
-              </Link>
-            </MenuItem>
+            <Box key={Math.random() * 100}>
+              <MenuItem onClick={handleClose}>
+                <Link
+                  component={NavLink}
+                  to={'/user'}
+                  sx={{
+                    textDecoration: 'none',
+                    fontWeight: 400,
+                    color: 'text.primary',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'left',
+                  }}
+                >
+                  <Avatar /> My account
+                </Link>
+              </MenuItem>
+            </Box>
           )}
           <Divider />
 
           {!isLoggedIn ? (
-            <>
+            <Box key={Math.random() * 100}>
               <MenuItem onClick={handleClose}>
                 <Link
                   component={NavLink}
@@ -192,7 +197,8 @@ export const Navigation = () => {
                   Sign up
                 </Link>
               </MenuItem>
-              <MenuItem onClick={handleClose}>
+
+              <MenuItem onClick={handleClose} key={Math.random() * 100}>
                 <Link
                   component={NavLink}
                   to={routes.LOGIN}
@@ -214,34 +220,37 @@ export const Navigation = () => {
                   Sign in
                 </Link>
               </MenuItem>
-            </>
+            </Box>
           ) : (
-            <MenuItem onClick={handlerLogout}>
-              <ListItemIcon>
-                <Logout fontSize="small" sx={{ color: 'text.primary' }} />
-              </ListItemIcon>
-              Logout
-            </MenuItem>
+            <Box key={Math.random() * 100}>
+              <MenuItem onClick={handlerLogout} key={Math.random() * 100}>
+                <ListItemIcon>
+                  <Logout fontSize="small" sx={{ color: 'text.primary' }} />
+                </ListItemIcon>
+                Logout
+              </MenuItem>
+            </Box>
           )}
+          <Box key={Math.random() * 100}>
+            <MenuItem key={Math.random() * 100}>
+              <SwitcherBox>
+                {darkMode ? (
+                  <LightModeIcon
+                    sx={{ color: 'text.primary', width: 24, height: 24 }}
+                  />
+                ) : (
+                  <ModeNight
+                    sx={{ color: 'text.primary', width: 24, height: 24 }}
+                  />
+                )}
 
-          <MenuItem>
-            <SwitcherBox>
-              {darkMode ? (
-                <LightModeIcon
-                  sx={{ color: 'text.primary', width: 24, height: 24 }}
+                <Switch
+                  onChange={() => dispatch(toggleTheme())}
+                  sx={{ color: '#94b340' }}
                 />
-              ) : (
-                <ModeNight
-                  sx={{ color: 'text.primary', width: 24, height: 24 }}
-                />
-              )}
-
-              <Switch
-                onChange={() => dispatch(toggleTheme())}
-                sx={{ color: '#94b340' }}
-              />
-            </SwitcherBox>
-          </MenuItem>
+              </SwitcherBox>
+            </MenuItem>
+          </Box>
         </Menu>
       </nav>
     </>

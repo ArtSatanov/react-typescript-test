@@ -15,7 +15,6 @@ export const StyledBox = styled(Box)(({ theme }) => ({
   color: theme.palette.divider,
   margin: '10px auto 50px',
   paddingTop: '20px',
-  boxShadow: '0 0 10px #c6cccced',
 }));
 export const StyledTextField = styled(TextField)(({ theme }) => ({
   display: 'flex',
@@ -30,7 +29,6 @@ export const StyledTextField = styled(TextField)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
   margin: '10px auto 50px',
   paddingTop: '20px',
-  boxShadow: '0 0 10px #c6cccced',
 }));
 
 export const StyledForm = styled('form')(({ theme }) => ({
@@ -42,8 +40,3 @@ export const StyledForm = styled('form')(({ theme }) => ({
   width: '100%',
   color: theme.palette.divider,
 }));
-
-// export const AppBarStyled = styled(AppBar)(({ theme }) => ({
-//   backgroundColor: theme.palette.background.paper,
-//   color: theme.palette.primary.main,
-// }));
