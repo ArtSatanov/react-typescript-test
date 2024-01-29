@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   selectError,
   selectIsLoading,
-  selectItems,
   selectVisItems,
 } from '../../services/redux/selectors/selectors';
 import { fetchProducts } from '../../services/redux/operations/operations';
