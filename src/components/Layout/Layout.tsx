@@ -24,17 +24,9 @@ export const Layout = () => {
               },
             }}
           >
-            <span style={{ color: '#94b340' }}>React</span>Test
+            <span style={{ color: '#038532' }}>React</span>Test
           </Typography>
           <FilterBar />
-
-          {/* <Search>
-            <LocationSearchingSharpIcon sx={{ color: 'black' }} />
-            <InputBase
-              placeholder="search..."
-              sx={{ color: '#1E1E1E', width: '100%' }}
-            />
-          </Search> */}
           <Navigation />
         </StyledTB>
       </AppBar>
