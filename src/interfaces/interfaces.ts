@@ -62,3 +62,9 @@ export interface IUser {
 export interface INotFoundInitSate {
   counter: number;
 }
+
+// -----------------------FILTER---------------------
+
+export interface IFilter {
+  filter: string | null;
+}

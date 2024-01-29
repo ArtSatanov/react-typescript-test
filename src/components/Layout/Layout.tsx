@@ -2,10 +2,11 @@ import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { Navigation } from '../Navigation/Navigation';
 import { AppBar, InputBase, Typography } from '@mui/material';
-import { StyledTB, Search } from './Layout.styled';
+import { StyledTB } from './Layout.styled';
 
 import LocationSearchingSharpIcon from '@mui/icons-material/LocationSearchingSharp';
 import { Loader } from 'components/Loader/Loader';
+import { FilterBar } from 'components/FilterBar/FilterBar';
 
 export const Layout = () => {
   return (
@@ -23,16 +24,17 @@ export const Layout = () => {
               },
             }}
           >
-            <span style={{ color: '#038532' }}>React</span>Test
+            <span style={{ color: '#94b340' }}>React</span>Test
           </Typography>
+          <FilterBar />
 
-          <Search>
+          {/* <Search>
             <LocationSearchingSharpIcon sx={{ color: 'black' }} />
             <InputBase
               placeholder="search..."
               sx={{ color: '#1E1E1E', width: '100%' }}
             />
-          </Search>
+          </Search> */}
           <Navigation />
         </StyledTB>
       </AppBar>

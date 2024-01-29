@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
+import { createSelector } from '@reduxjs/toolkit';
 
-// ---------------Auth-----------------------
+// -----------------Auth-----------------------
 
 export const selectIsLoggedIn = (state: RootState) => state.auth.isLoggedIn;
 export const selectIsAdmin = (state: RootState) => state.auth.isAdmin;
@@ -24,14 +25,28 @@ export const useAuth = () => {
   };
 };
 
-// ---------------Items-----------------------
+// ----------------Items-----------------------
 
 export const selectItems = (state: RootState) => state.items.items;
 export const selectIsLoading = (state: RootState) => state.items.isLoading;
 export const selectError = (state: RootState) => state.items.error;
 
-// -----------------NotFound-------------------------
+// -----------------NotFound------------------------
 export const selectCounter = (state: RootState) => state.notFound.counter;
 
 // -----------------Theme------------------------
 export const selectTheme = (state: RootState) => state.theme.darkMode;
+
+// -----------------Filter------------------------
+export const selectFilter = (state: RootState) => state.filter.filter;
+
+export const selectVisItems = createSelector(
+  [selectItems, selectFilter],
+  (items, filter) => {
+    return items.filter((item: RootState) =>
+      filter === ''
+        ? item
+        : item.name.toLowerCase().includes(filter.toLowerCase())
+    );
+  }
+);

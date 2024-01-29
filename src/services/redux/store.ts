@@ -15,6 +15,7 @@ import storage from 'redux-persist/lib/storage';
 import { itemsReducer } from './itemsSlice/itemsSilce';
 import { notFoundReducer } from './notFoundSlice/notFoundSlice';
 import { themeReducer } from './themeSlice/themeSlice';
+import { filterReducer } from './filterSlice/filterSlice';
 
 const authPersistCfg = {
   key: 'auth',
@@ -33,6 +34,7 @@ export const store = configureStore({
     items: itemsReducer,
     notFound: notFoundReducer,
     theme: persistReducer<any, any>(themePersistCfg, themeReducer),
+    filter: filterReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

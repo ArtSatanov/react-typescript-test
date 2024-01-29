@@ -19,7 +19,7 @@ import {
 import Grid from '@mui/material/Grid';
 
 export const ItemList = () => {
-  const items = useSelector(selectItems);
+  const items = useSelector(selectVisItems);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
