@@ -36,7 +36,7 @@ export const UserData = () => {
 
   return (
     <>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} sx={{ marginTop: '30px' }}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
@@ -51,7 +51,7 @@ export const UserData = () => {
             {rows.map(row => (
               <StyledTableRow key={row.email}>
                 <StyledTableCell component="th" scope="row">
-                  {row.name}
+                  {`${row.name} ${row.lastname}`}
                 </StyledTableCell>
                 <StyledTableCell align="right">{row.email}</StyledTableCell>
                 <StyledTableCell align="right">{row.password}</StyledTableCell>
