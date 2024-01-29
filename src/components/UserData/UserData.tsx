@@ -31,7 +31,8 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 export const UserData = () => {
   const user = useSelector(selectUser);
 
-  let rows = [...user];
+  let rows: any[] = [];
+  rows.push(user);
 
   return (
     <>
@@ -50,7 +51,7 @@ export const UserData = () => {
             {rows.map(row => (
               <StyledTableRow key={row.email}>
                 <StyledTableCell component="th" scope="row">
-                  {row.name + row.lastname}
+                  {row.name}
                 </StyledTableCell>
                 <StyledTableCell align="right">{row.email}</StyledTableCell>
                 <StyledTableCell align="right">{row.password}</StyledTableCell>
