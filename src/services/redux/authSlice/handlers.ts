@@ -6,8 +6,8 @@ export const handleSignUpFulfilled = (
   state: IInitState,
   action: PayloadAction<IResponseUser>
 ) => {
-  const { email, password, id, name } = action.payload;
-  state.user = { email: email, password: password, name: name };
+  const { email, password, id, name, lastname } = action.payload;
+  state.user = { email, password, name, lastname };
   state.fakeToken = id;
   state.isLoggedIn = true;
   state.isRefreshing = false;
@@ -18,11 +18,11 @@ export const handleLogInFulfilled = (
   state: IInitState,
   action: PayloadAction<IResponseUser>
 ) => {
-  const { email, password, id, name } = action.payload;
+  const { email, password, id, name, lastname } = action.payload;
   if (email === 'admin@gmail.com') {
     state.isAdmin = true;
   }
-  state.user = { email: email, password: password, name: name };
+  state.user = { email, password, name, lastname };
   state.fakeToken = id;
   state.isLoggedIn = true;
   state.isRefreshing = false;
@@ -34,11 +34,16 @@ export const handleRefreshUserFulfilled = (
   state: IInitState,
   action: PayloadAction<IResponseUser>
 ) => {
-  const { email, password, id, name } = action.payload;
+  const { email, password, id, name, lastname } = action.payload;
   if (email === 'admin@gmail.com') {
     state.isAdmin = true;
   }
-  state.user = { email: email, password: password, name: name };
+  state.user = {
+    email,
+    password,
+    name,
+    lastname,
+  };
   state.fakeToken = id;
   state.isLoggedIn = true;
   state.isRefreshing = false;

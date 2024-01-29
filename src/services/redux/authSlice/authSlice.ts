@@ -10,7 +10,7 @@ import {
 } from './handlers';
 
 const initialState: IInitState = {
-  user: { email: null, password: null, name: null },
+  user: { email: null, password: null, name: null, lastname: null },
   isLoggedIn: false,
   isAdmin: false,
   isRefreshing: false,

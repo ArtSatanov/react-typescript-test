@@ -1,5 +1,9 @@
-import React from 'react';
+import { UserData } from 'components/UserData/UserData';
 
 export const AdminPage = () => {
-  return <div>AdminDashboard</div>;
+  return (
+    <div>
+      <UserData />
+    </div>
+  );
 };

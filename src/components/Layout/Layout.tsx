@@ -1,10 +1,9 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { Navigation } from '../Navigation/Navigation';
-import { AppBar, InputBase, Typography } from '@mui/material';
+import { AppBar, Typography } from '@mui/material';
 import { StyledTB } from './Layout.styled';
 
-import LocationSearchingSharpIcon from '@mui/icons-material/LocationSearchingSharp';
 import { Loader } from 'components/Loader/Loader';
 import { FilterBar } from 'components/FilterBar/FilterBar';
 
