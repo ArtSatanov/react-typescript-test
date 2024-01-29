@@ -12,7 +12,7 @@ import { AppDispatch } from '../../services/redux/store';
 import { signUpUser } from '../../services/redux/operations/operations';
 import { useDispatch } from 'react-redux';
 import { Box, Button, TextField } from '@mui/material';
-import { StyledBox, StyledForm } from './Signup.styled';
+import { StyledBox, StyledForm, StyledTextField } from './Signup.styled';
 
 const pwRegexp =
   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
@@ -56,7 +56,7 @@ export const Signup = () => {
     <StyledBox>
       <h1>Signup</h1>
       <StyledForm onSubmit={formik.handleSubmit}>
-        <TextField
+        <StyledTextField
           fullWidth
           id="name"
           name="name"

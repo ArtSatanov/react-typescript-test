@@ -17,18 +17,12 @@ export const StyledBox = styled(Box)(({ theme }) => ({
   paddingTop: '20px',
 }));
 export const StyledTextField = styled(TextField)(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  gap: '20px',
-  justifyContent: 'center',
-  maxWidth: '300px',
-  border: '1px solid rgba(46, 47, 66, 0.1)',
+  borderColor: `${theme.palette.divider}`,
+  //   border: `1px solid ${theme.palette.divider}`,
   borderRadius: '2%',
-  overflow: 'hidden',
   backgroundColor: theme.palette.background.paper,
-  margin: '10px auto 50px',
-  paddingTop: '20px',
+  //   margin: '10px auto 50px',
+  //   paddingTop: '20px',
 }));
 
 export const StyledForm = styled('form')(({ theme }) => ({
