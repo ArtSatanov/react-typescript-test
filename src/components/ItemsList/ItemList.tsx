@@ -4,6 +4,7 @@ import {
   selectError,
   selectIsLoading,
   selectItems,
+  selectVisItems,
 } from '../../services/redux/selectors/selectors';
 import { fetchProducts } from '../../services/redux/operations/operations';
 import { AppDispatch } from '../../services/redux/store';

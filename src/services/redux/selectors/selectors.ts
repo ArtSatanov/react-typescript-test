@@ -38,11 +38,11 @@ export const selectCounter = (state: RootState) => state.notFound.counter;
 export const selectTheme = (state: RootState) => state.theme.darkMode;
 
 // -----------------Filter------------------------
-export const selectFilter = (state: RootState) => state.filter.filter;
+export const selectFilter = (state: RootState) => state.filter;
 
 export const selectVisItems = createSelector(
   [selectItems, selectFilter],
-  (items, filter) => {
+  (items: [], filter: string) => {
     return items.filter((item: RootState) =>
       filter === ''
         ? item
