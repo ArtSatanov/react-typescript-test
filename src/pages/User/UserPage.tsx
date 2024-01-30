@@ -1,9 +1,11 @@
-import { ItemList } from '../../components/ItemsList/ItemList';
-import { useAuth } from '../../services/redux/selectors/selectors';
+import { UserData } from 'components/UserData/UserData';
 
 const UserPage = () => {
-  const { isLoggedIn, token } = useAuth();
-  return <div>{isLoggedIn && token && <ItemList />}</div>;
+  return (
+    <div>
+      <UserData />
+    </div>
+  );
 };
 
 export default UserPage;
