@@ -8,6 +8,11 @@ export async function getProducts(signal: any) {
   return data;
 }
 
+export async function fetchUsers(signal: any) {
+  const { data } = await axios.get(`users`, { signal });
+  return data;
+}
+
 export async function getListOfUsers() {
   const { data } = await axios.get(`users`);
   return data;

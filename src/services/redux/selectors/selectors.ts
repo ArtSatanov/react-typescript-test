@@ -37,6 +37,11 @@ export const selectCounter = (state: RootState) => state.notFound.counter;
 // -----------------Theme------------------------
 export const selectTheme = (state: RootState) => state.theme.darkMode;
 
+// ----------------------UserList----------------------
+export const selectUsers = (state: RootState) => state.users.users;
+export const selectIsLoadingUsers = (state: RootState) => state.users.isLoading;
+export const selectErrorUsers = (state: RootState) => state.users.error;
+
 // -----------------Filter------------------------
 export const selectFilter = (state: RootState) => state.filter;
 
@@ -47,6 +52,17 @@ export const selectVisItems = createSelector(
       filter === ''
         ? item
         : item.name.toLowerCase().includes(filter.toLowerCase())
+    );
+  }
+);
+
+export const selectVisUsers = createSelector(
+  [selectUsers, selectFilter],
+  (users: [], filter: string) => {
+    return users.filter((user: RootState) =>
+      filter === ''
+        ? user
+        : user.name.toLowerCase().includes(filter.toLowerCase())
     );
   }
 );

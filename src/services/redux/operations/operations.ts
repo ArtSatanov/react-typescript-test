@@ -5,6 +5,7 @@ import {
   getUser,
   getListOfUsers,
   userStatus,
+  fetchUsers,
 } from '../../API/API';
 import { RootState } from '../store';
 import { IUserForm, IResponseUser } from '../../../interfaces/interfaces';
@@ -14,6 +15,17 @@ export const fetchProducts = createAsyncThunk(
   async (signal: any, thunkAPI) => {
     try {
       return await getProducts(signal);
+    } catch (e: any) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const fetchUsersList = createAsyncThunk(
+  'fetchUsers',
+  async (signal: any, thunkAPI) => {
+    try {
+      return await fetchUsers(signal);
     } catch (e: any) {
       return thunkAPI.rejectWithValue(e.message);
     }

@@ -1,5 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { IInitStateUsers } from 'interfaces/interfaces';
+import { fetchUsersList } from '../operations/operations';
+import {
+  handleUsersFulfilled,
+  handleUsersPending,
+  handleUsersRejected,
+} from './handlers';
 
 const initialState: IInitStateUsers = {
   users: [],
@@ -11,11 +17,11 @@ export const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {},
-  //   extraReducers: builder => {
-  //     builder.addCase(fetchProducts.pending, handleItemsPending);
-  //     builder.addCase(fetchProducts.fulfilled, handleItemsFulfilled);
-  //     builder.addCase(fetchProducts.rejected, handleItemsRejected);
-  //   },
+  extraReducers: builder => {
+    builder.addCase(fetchUsersList.pending, handleUsersPending);
+    builder.addCase(fetchUsersList.fulfilled, handleUsersFulfilled);
+    builder.addCase(fetchUsersList.rejected, handleUsersRejected);
+  },
 });
 
 export const usersReducer = usersSlice.reducer;

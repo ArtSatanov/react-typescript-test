@@ -1,9 +1,9 @@
-import { UserData } from 'components/UserData/UserData';
+import { UsersList } from 'components/UsersList/UsersList';
 
 export const AdminPage = () => {
   return (
     <div>
-      <UserData />
+      <UsersList />
     </div>
   );
 };

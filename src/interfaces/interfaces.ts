@@ -67,7 +67,7 @@ export interface INotFoundInitSate {
 // ------------------------NOTFOUND-----------------------------
 
 export interface IInitStateUsers {
-  users: IUser[];
+  users: IResponseUser[];
   isLoading: boolean;
   error: string | null;
 }
