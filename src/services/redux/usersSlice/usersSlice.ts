@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { IInitStateItems } from 'interfaces/interfaces';
+import { IInitStateUsers } from 'interfaces/interfaces';
 
-const initialState: IInitStateItems = {
-  items: [],
+const initialState: IInitStateUsers = {
+  users: [],
   isLoading: false,
   error: null,
 };

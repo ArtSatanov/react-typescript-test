@@ -63,3 +63,11 @@ export interface IUser {
 export interface INotFoundInitSate {
   counter: number;
 }
+
+// ------------------------NOTFOUND-----------------------------
+
+export interface IInitStateUsers {
+  users: IUser[];
+  isLoading: boolean;
+  error: string | null;
+}
