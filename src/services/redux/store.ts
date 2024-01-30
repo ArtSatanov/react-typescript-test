@@ -16,6 +16,7 @@ import { itemsReducer } from './itemsSlice/itemsSilce';
 import { notFoundReducer } from './notFoundSlice/notFoundSlice';
 import { themeReducer } from './themeSlice/themeSlice';
 import { filterReducer } from './filterSlice/filterSlice';
+import { usersReducer } from './usersSlice/usersSlice';
 
 const authPersistCfg = {
   key: 'auth',
@@ -35,6 +36,7 @@ export const store = configureStore({
     notFound: notFoundReducer,
     theme: persistReducer<any, any>(themePersistCfg, themeReducer),
     filter: filterReducer,
+    users: usersReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
