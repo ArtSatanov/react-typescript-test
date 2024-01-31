@@ -69,7 +69,6 @@ export const refreshUser = createAsyncThunk(
     }
     try {
       const user = await getUser(persistedToken);
-      console.log(user);
       return user;
     } catch (e: any) {
       return thunkAPI.rejectWithValue(e.message);
