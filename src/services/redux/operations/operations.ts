@@ -6,6 +6,7 @@ import {
   getListOfUsers,
   userStatus,
   fetchUsers,
+  deleteUser,
 } from '../../API/API';
 import { RootState } from '../store';
 import { IUserForm, IResponseUser } from '../../../interfaces/interfaces';
@@ -26,6 +27,17 @@ export const fetchUsersList = createAsyncThunk(
   async (signal: any, thunkAPI) => {
     try {
       return await fetchUsers(signal);
+    } catch (e: any) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const deleteUsers = createAsyncThunk(
+  'deleteUsers',
+  async (id: string, thunkAPI) => {
+    try {
+      return await deleteUser(id);
     } catch (e: any) {
       return thunkAPI.rejectWithValue(e.message);
     }

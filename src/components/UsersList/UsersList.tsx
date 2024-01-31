@@ -1,4 +1,5 @@
 import {
+  Button,
   Paper,
   Table,
   TableBody,
@@ -12,7 +13,10 @@ import {
 import { Loader } from 'components/Loader/Loader';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUsersList } from 'services/redux/operations/operations';
+import {
+  deleteUsers,
+  fetchUsersList,
+} from 'services/redux/operations/operations';
 import {
   selectErrorUsers,
   selectIsLoadingUsers,
@@ -82,12 +86,16 @@ export const UsersList = () => {
                     {user.password}
                   </StyledTableCell>
                   <StyledTableCell align="right">{user.id}</StyledTableCell>
+
                   <StyledTableCell align="right">
                     {!user.status ? (
                       <HotelIcon sx={{ color: 'tomato' }} />
                     ) : (
                       <AccessibilityNewIcon sx={{ color: 'green' }} />
                     )}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    <Button onClick={() => dispatch(deleteUsers(user.id))} />
                   </StyledTableCell>
                 </StyledTableRow>
               ))}

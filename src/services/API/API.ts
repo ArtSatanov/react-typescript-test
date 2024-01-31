@@ -18,6 +18,11 @@ export async function getListOfUsers() {
   return data;
 }
 
+export async function deleteUser(id: string) {
+  const { data } = await axios.delete(`users/${id}`);
+  return data;
+}
+
 export async function getUser(id: string) {
   const { data } = await axios.get(`users/${id}`);
   return data;

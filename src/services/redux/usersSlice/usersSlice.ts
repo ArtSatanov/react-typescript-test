@@ -1,7 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { IInitStateUsers } from 'interfaces/interfaces';
-import { fetchUsersList } from '../operations/operations';
+import { deleteUsers, fetchUsersList } from '../operations/operations';
 import {
+  handleDeleteUsersFulfilled,
+  handleDeleteUsersPending,
+  handleDeleteUsersRejected,
   handleUsersFulfilled,
   handleUsersPending,
   handleUsersRejected,
@@ -21,6 +24,9 @@ export const usersSlice = createSlice({
     builder.addCase(fetchUsersList.pending, handleUsersPending);
     builder.addCase(fetchUsersList.fulfilled, handleUsersFulfilled);
     builder.addCase(fetchUsersList.rejected, handleUsersRejected);
+    builder.addCase(deleteUsers.pending, handleDeleteUsersPending);
+    builder.addCase(deleteUsers.fulfilled, handleDeleteUsersFulfilled);
+    builder.addCase(deleteUsers.rejected, handleDeleteUsersRejected);
   },
 });
 
