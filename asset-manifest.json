@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/react-typescript-test/static/js/main.3570e015.js",
+    "main.js": "/react-typescript-test/static/js/main.8dcae86c.js",
     "static/js/869.8d96e498.chunk.js": "/react-typescript-test/static/js/869.8d96e498.chunk.js",
     "static/js/721.b7643cab.chunk.js": "/react-typescript-test/static/js/721.b7643cab.chunk.js",
     "static/js/903.268e5d90.chunk.js": "/react-typescript-test/static/js/903.268e5d90.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/106.c67db61b.chunk.js": "/react-typescript-test/static/js/106.c67db61b.chunk.js",
     "static/js/270.06234cb6.chunk.js": "/react-typescript-test/static/js/270.06234cb6.chunk.js",
     "index.html": "/react-typescript-test/index.html",
-    "main.3570e015.js.map": "/react-typescript-test/static/js/main.3570e015.js.map",
+    "main.8dcae86c.js.map": "/react-typescript-test/static/js/main.8dcae86c.js.map",
     "869.8d96e498.chunk.js.map": "/react-typescript-test/static/js/869.8d96e498.chunk.js.map",
     "721.b7643cab.chunk.js.map": "/react-typescript-test/static/js/721.b7643cab.chunk.js.map",
     "903.268e5d90.chunk.js.map": "/react-typescript-test/static/js/903.268e5d90.chunk.js.map",
@@ -21,6 +21,6 @@
     "270.06234cb6.chunk.js.map": "/react-typescript-test/static/js/270.06234cb6.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.3570e015.js"
+    "static/js/main.8dcae86c.js"
   ]
 }
