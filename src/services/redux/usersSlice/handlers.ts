@@ -18,7 +18,9 @@ export const handleUsersRejected = (
   action: PayloadAction<any>
 ) => {
   state.isLoading = false;
-  state.error = action.payload;
+  action.payload === 'canceled'
+    ? (state.error = null)
+    : (state.error = action.payload);
 };
 
 export const handleDeleteUsersFulfilled = (

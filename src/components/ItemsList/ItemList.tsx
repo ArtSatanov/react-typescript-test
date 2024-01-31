@@ -36,7 +36,7 @@ export const ItemList = () => {
   return (
     <div>
       {isLoading && <Loader />}
-      {!isLoading && error === 'canceled' && items.length !== 0 && (
+      {!isLoading && !error && items.length !== 0 && (
         <Grid
           container
           direction="row"

@@ -1,9 +1,11 @@
 import { UsersList } from 'components/UsersList/UsersList';
 
-export const AdminPage = () => {
+const AdminPage = () => {
   return (
     <div>
       <UsersList />
     </div>
   );
 };
+
+export default AdminPage;

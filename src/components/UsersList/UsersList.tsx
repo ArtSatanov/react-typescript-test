@@ -63,7 +63,7 @@ export const UsersList = () => {
   return (
     <>
       {isLoading && <Loader />}
-      {!isLoading && error === 'canceled' && users.length !== 0 && (
+      {!isLoading && !error && users.length !== 0 && (
         <TableContainer component={Paper} sx={{ marginTop: '30px' }}>
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
             <TableHead>
@@ -73,6 +73,7 @@ export const UsersList = () => {
                 <StyledTableCell align="right">Password</StyledTableCell>
                 <StyledTableCell align="right">ID</StyledTableCell>
                 <StyledTableCell align="right">Status</StyledTableCell>
+                <StyledTableCell align="right">Delete</StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -95,7 +96,9 @@ export const UsersList = () => {
                     )}
                   </StyledTableCell>
                   <StyledTableCell align="right">
-                    <Button onClick={() => dispatch(deleteUsers(user.id))} />
+                    <Button onClick={() => dispatch(deleteUsers(user.id))}>
+                      Delete
+                    </Button>
                   </StyledTableCell>
                 </StyledTableRow>
               ))}

@@ -1,22 +1,23 @@
 import { Route, Routes } from 'react-router';
 import { Layout } from './components/Layout/Layout';
 import { routes } from './const/routes';
-import Home from './pages/Home/Home';
-import LoginPage from './pages/LoginPage/LoginPage';
-import RegisterPage from './pages/RegisterPage/RegisterPage';
-import NotFound from './pages/NotFound/NotFound';
 import { RestrictedRoute } from './components/RestrictedRoute/RestrictedRoute';
 import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
-import { AdminPage } from './pages/Admin/AdminPage';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from './services/redux/store';
-import { useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 import { useAuth } from './services/redux/selectors/selectors';
 import { refreshUser } from './services/redux/operations/operations';
-import UserPage from './pages/User/UserPage';
 import { styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
 import { Loader } from 'components/Loader/Loader';
+
+const Home = lazy(() => import('pages/Home/Home'));
+const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
+const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
+const NotFound = lazy(() => import('pages/NotFound/NotFound'));
+const UserPage = lazy(() => import('pages/User/UserPage'));
+const AdminPage = lazy(() => import('pages/Admin/AdminPage'));
 
 const Container = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('mobile')]: {

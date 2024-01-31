@@ -16,7 +16,7 @@ root.render(
     <Provider store={store}>
       <ThemeProvider>
         <PersistGate loading={null} persistor={persistor}>
-          <BrowserRouter>
+          <BrowserRouter basename="/react-typescript-test">
             <App />
           </BrowserRouter>
         </PersistGate>

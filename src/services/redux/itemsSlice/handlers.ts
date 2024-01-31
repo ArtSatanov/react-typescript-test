@@ -18,5 +18,7 @@ export const handleItemsRejected = (
   action: PayloadAction<any>
 ) => {
   state.isLoading = false;
-  state.error = action.payload;
+  action.payload === 'canceled'
+    ? (state.error = null)
+    : (state.error = action.payload);
 };
